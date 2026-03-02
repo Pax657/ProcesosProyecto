@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Movimiento : MonoBehaviour
 {
     private Vector2 seguir;
 
-    private NavMeshAgent agent;
+    private SpriteRenderer spriteRenderer;
    
 
     public float speed;
@@ -18,6 +17,7 @@ public class Movimiento : MonoBehaviour
     void Start()
     {
         seguir = transform.localPosition;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -33,6 +33,7 @@ public class Movimiento : MonoBehaviour
         transform.localPosition = Vector2.MoveTowards(transform.position, seguir, speed*Time.deltaTime);
 
         cambioPerspectiva();
+        ajusteLayers();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -51,5 +52,10 @@ public class Movimiento : MonoBehaviour
         escalaActual.y = nuevaPerspectiva;
 
         transform.localScale = escalaActual;
+    }
+
+    private void ajusteLayers()
+    {
+        spriteRenderer.sortingOrder = (int)transform.position.y * -10;
     }
 }

@@ -54,5 +54,8 @@ TagManager:
   - name: Objetos delante
     uniqueID: 2276586545
     locked: 0
+  - name: prueba
+    uniqueID: 823124713
+    locked: 0
   m_RenderingLayers:
   - Default
