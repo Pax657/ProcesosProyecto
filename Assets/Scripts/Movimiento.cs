@@ -7,6 +7,10 @@ public class Movimiento : MonoBehaviour
 
     public float speed;
 
+    public float perspectiva;
+    public float ratioPerspectiva;
+    public float minPers, maxPers;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,10 +28,25 @@ public class Movimiento : MonoBehaviour
         }
 
         transform.localPosition = Vector2.MoveTowards(transform.position, seguir, speed*Time.deltaTime);
+
+        cambioPerspectiva();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         seguir = transform.localPosition;
+    }
+
+    private void cambioPerspectiva()
+    {
+        Vector3 escalaActual = this.transform.localScale;
+
+        float nuevaPerspectiva = perspectiva * (ratioPerspectiva - transform.position.y);
+        nuevaPerspectiva = Mathf.Clamp(nuevaPerspectiva, minPers, maxPers);
+
+        escalaActual.x = nuevaPerspectiva;
+        escalaActual.y = nuevaPerspectiva;
+
+        transform.localScale = escalaActual;
     }
 }
