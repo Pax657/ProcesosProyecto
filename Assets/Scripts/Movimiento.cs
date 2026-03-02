@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Movimiento : MonoBehaviour
 {
     private Vector2 seguir;
+
+    private NavMeshAgent agent;
    
 
     public float speed;
@@ -41,8 +44,8 @@ public class Movimiento : MonoBehaviour
     {
         Vector3 escalaActual = this.transform.localScale;
 
-        float nuevaPerspectiva = perspectiva * (ratioPerspectiva - transform.position.y);
-        nuevaPerspectiva = Mathf.Clamp(nuevaPerspectiva, minPers, maxPers);
+        float nuevaPerspectiva = perspectiva * (ratioPerspectiva - transform.position.y); //La perspectiva depende de la posición en y
+        nuevaPerspectiva = Mathf.Clamp(nuevaPerspectiva, minPers, maxPers); //Al clampear, se usan SÓLO valores entre estos 2
 
         escalaActual.x = nuevaPerspectiva;
         escalaActual.y = nuevaPerspectiva;
