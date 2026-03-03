@@ -45,17 +45,11 @@ TagManager:
   - name: Floor
     uniqueID: 3040331257
     locked: 0
-  - name: "Objetos detr\xE1s"
-    uniqueID: 1566042937
-    locked: 0
-  - name: Player
-    uniqueID: 3179647553
-    locked: 0
-  - name: Objetos delante
-    uniqueID: 2276586545
-    locked: 0
   - name: prueba
     uniqueID: 823124713
+    locked: 0
+  - name: "Di\xE1logo"
+    uniqueID: 2585395059
     locked: 0
   m_RenderingLayers:
   - Default
