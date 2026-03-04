@@ -574,6 +574,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664042175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664042176}
+  m_Layer: 0
+  m_Name: Dialogue anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &664042176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664042175}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9194302, y: 16.38, z: 0}
+  m_LocalScale: {x: 1.8957347, y: 1.8957347, z: 4.7393365}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1638408767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1143081982
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +619,7 @@ GameObject:
   - component: {fileID: 1143081987}
   - component: {fileID: 1143081986}
   - component: {fileID: 1143081988}
+  - component: {fileID: 1143081989}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -667,7 +699,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1844563510}
+  - {fileID: 1525194873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1143081985
@@ -783,6 +815,19 @@ MonoBehaviour:
   description: Puto tonto gilipollas
   effectAudioSource: {fileID: 0}
   voiceAudioSource: {fileID: 0}
+--- !u!114 &1143081989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143081982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3b84c9b0b2b6e44951282fa26c0234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::characterAnchor
+  dialogueAnchor: {fileID: 1525194873}
 --- !u!1 &1429254283
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +847,8 @@ GameObject:
   - component: {fileID: 1429254293}
   - component: {fileID: 1429254291}
   - component: {fileID: 1429254294}
+  - component: {fileID: 1429254296}
+  - component: {fileID: 1429254295}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -822,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 89.384285, y: 287.1856}
+  scrollPos: {x: -0.7256031, y: 260.81183}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 403
@@ -835,7 +882,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1429254286}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 1429254295}
   variables: []
   description: 
   stepPause: 0
@@ -901,6 +949,8 @@ MonoBehaviour:
   commandList:
   - {fileID: 1429254285}
   - {fileID: 1429254294}
+  - {fileID: 1429254296}
+  - {fileID: 1429254295}
   - {fileID: 1429254291}
   suppressAllAutoSelections: 0
 --- !u!114 &1429254287
@@ -1053,7 +1103,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &1429254294
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1068,6 +1118,60 @@ MonoBehaviour:
   storyText: Casi me dan ganas de cortarme los cojones
   description: 
   character: {fileID: 1143081988}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1429254295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429254283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Say
+  itemId: 9
+  indentLevel: 0
+  storyText: que.
+  description: 
+  character: {fileID: 1143081988}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1429254296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429254283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Say
+  itemId: 8
+  indentLevel: 0
+  storyText: "\xBFC\xD3MO CO\xD1O ESTOY VIVO?"
+  description: 
+  character: {fileID: 1638408769}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1333,6 +1437,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523919718}
   m_CullTransparentMesh: 1
+--- !u!1 &1525194872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1525194873}
+  m_Layer: 0
+  m_Name: Dialogue anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1525194873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525194872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.34, y: 7.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1143081984}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548106804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,6 +1694,7 @@ GameObject:
   - component: {fileID: 1638408765}
   - component: {fileID: 1638408768}
   - component: {fileID: 1638408769}
+  - component: {fileID: 1638408770}
   m_Layer: 0
   m_Name: silla
   m_TagString: Untagged
@@ -1685,6 +1821,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1514913301}
+  - {fileID: 664042176}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1638408768
@@ -1720,6 +1857,19 @@ MonoBehaviour:
   description: "QUE MIERDA, C\xD3MO ESTOY VIVO???????"
   effectAudioSource: {fileID: 0}
   voiceAudioSource: {fileID: 0}
+--- !u!114 &1638408770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638408764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3b84c9b0b2b6e44951282fa26c0234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::characterAnchor
+  dialogueAnchor: {fileID: 664042176}
 --- !u!1 &1844563500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,6 +1888,7 @@ GameObject:
   - component: {fileID: 1844563503}
   - component: {fileID: 1844563502}
   - component: {fileID: 1844563501}
+  - component: {fileID: 1844563511}
   m_Layer: 5
   m_Name: SayDialog
   m_TagString: Untagged
@@ -1855,7 +2006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickMode: 1
-  nextClickDelay: 0
+  nextClickDelay: 0.2
   cancelEnabled: 1
   ignoreMenuClicks: 1
 --- !u!114 &1844563503
@@ -2008,17 +2159,31 @@ RectTransform:
   m_GameObject: {fileID: 1844563500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.008526304, y: 0.008526304, z: 0.0034105214}
+  m_LocalScale: {x: 0.0034105217, y: 0.0034105217, z: 0.0034105214}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1523919719}
-  m_Father: {fileID: 1143081984}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.34, y: 7.79}
+  m_AnchoredPosition: {x: 71.20331, y: -2406.5034}
   m_SizeDelta: {x: 2130.7085, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1844563511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844563500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7619471482220d40ba0fa3ce629074a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::AutoDialogueFollower
+  sayDialog: {fileID: 1844563505}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1896938685
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,4 +2288,5 @@ SceneRoots:
   - {fileID: 13935089}
   - {fileID: 1429254290}
   - {fileID: 357360045}
+  - {fileID: 1844563510}
   - {fileID: 90992383}
