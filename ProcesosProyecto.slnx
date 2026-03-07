@@ -5,4 +5,5 @@
   <Project Path="Fungus.FungusLuaEditor.csproj" />
   <Project Path="Fungus.UsfxrEditor.csproj" />
   <Project Path="Fungus.LineEndingsEditor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
 </Solution>

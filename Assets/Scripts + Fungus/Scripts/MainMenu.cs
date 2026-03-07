@@ -18,4 +18,15 @@ public class MenuPrincipal : MonoBehaviour
         Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
+
+    public void Creditos()
+    {
+        SceneManager.LoadScene("Creditos");
+    }
+
+    public void volverMenu()
+    {
+        Debug.Log("Volviendo al menu...");
+        SceneManager.LoadScene("MainMenu");
+    }
 }
