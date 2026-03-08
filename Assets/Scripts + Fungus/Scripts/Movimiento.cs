@@ -11,15 +11,22 @@ public class Movimiento : MonoBehaviour
 
     public float speed;
 
+    private Vector3 escalaInicial;
+
+    public Transform yCerca;
+    public Transform yLejos;
+
     public float perspectiva;
     public float ratioPerspectiva;
     public float minPers, maxPers;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         seguir = transform.localPosition;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        escalaInicial = transform.localScale;
     }
 
     // Update is called once per frame
@@ -31,6 +38,7 @@ public class Movimiento : MonoBehaviour
         }
         cambioPerspectiva();
         ajusteLayers();
+        Debug.Log(this.transform.localScale);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -40,15 +48,15 @@ public class Movimiento : MonoBehaviour
 
     private void cambioPerspectiva()
     {
-        Vector3 escalaActual = this.transform.localScale;
+        float t = Mathf.InverseLerp(yLejos.position.y, yCerca.position.y, transform.position.y);
 
-        float nuevaPerspectiva = perspectiva * (ratioPerspectiva - transform.position.y); //La perspectiva depende de la posición en y
-        nuevaPerspectiva = Mathf.Clamp(nuevaPerspectiva, minPers, maxPers); //Al clampear, se usan SÓLO valores entre estos 2
+        float nuevaPerspectiva = Mathf.Lerp(minPers, maxPers, t);
 
-        escalaActual.x = nuevaPerspectiva;
-        escalaActual.y = nuevaPerspectiva;
+        Vector3 nuevaEscala = escalaInicial;
+        nuevaEscala.x = escalaInicial.x * nuevaPerspectiva;
+        nuevaEscala.y = escalaInicial.y * nuevaPerspectiva;
 
-        transform.localScale = escalaActual;
+        transform.localScale = nuevaEscala;
     }
 
     private void ajusteLayers()
