@@ -48,6 +48,9 @@ TagManager:
   - name: Main
     uniqueID: 823124713
     locked: 0
+  - name: Delante de Jugador
+    uniqueID: 27058799
+    locked: 0
   - name: "Di\xE1logo"
     uniqueID: 2585395059
     locked: 0
