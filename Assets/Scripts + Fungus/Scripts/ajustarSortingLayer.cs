@@ -8,6 +8,6 @@ public class ajustarSortingLayer : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sortingOrder = (int)transform.position.y * -10;
+        spriteRenderer.sortingOrder = (int)transform.position.y * -1;
     }
 }

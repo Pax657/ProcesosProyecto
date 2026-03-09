@@ -61,7 +61,9 @@ public class Movimiento : MonoBehaviour
 
     private void ajusteLayers()
     {
-        spriteRenderer.sortingOrder = (int)transform.position.y * -10;
+        float t = Mathf.InverseLerp(yLejos.position.y, yCerca.position.y, transform.position.y);
+
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(Mathf.Lerp(-10, 100, t));
     }
 
     private void clickMoverse()
