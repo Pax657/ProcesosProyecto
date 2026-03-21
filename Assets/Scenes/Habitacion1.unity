@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 109953647}
   - component: {fileID: 109953646}
   - component: {fileID: 109953645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Clickable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 290515287}
   - component: {fileID: 290515286}
   m_Layer: 0
-  m_Name: barrera1 (2)
+  m_Name: barreraPuerta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 394639707}
   - component: {fileID: 394639706}
   - component: {fileID: 394639708}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: camaClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,8 +943,11 @@ PolygonCollider2D:
       - {x: 5.9023056, y: -0.7743285}
       - {x: 5.7332845, y: -0.76516247}
       - {x: 4.8113885, y: -2.1252997}
-      - {x: 4.5789146, y: -0.53558844}
-      - {x: 3.5518804, y: -0.5007265}
+      - {x: 4.8243737, y: -0.94003534}
+      - {x: 4.4495244, y: -0.6047044}
+      - {x: 4.406966, y: 0.68434477}
+      - {x: 3.5803206, y: 1.4073215}
+      - {x: 2.8530219, y: 1.0710224}
       - {x: 2.3442445, y: -0.55374455}
       - {x: 1.759733, y: -0.8052379}
       - {x: 1.6229941, y: -2.0732143}
@@ -1494,6 +1497,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &823943599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823943600}
+  m_Layer: 0
+  m_Name: ---------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &823943600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823943599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.66635, y: -0.703, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &844044455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,6 +1628,12 @@ GameObject:
   - component: {fileID: 846854235}
   - component: {fileID: 846854234}
   - component: {fileID: 846854233}
+  - component: {fileID: 846854241}
+  - component: {fileID: 846854240}
+  - component: {fileID: 846854239}
+  - component: {fileID: 846854238}
+  - component: {fileID: 846854237}
+  - component: {fileID: 846854236}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1614,7 +1654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 28.94473, y: 244.32822}
+  scrollPos: {x: 13.560153, y: 258.6139}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 403
@@ -1625,10 +1665,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 846854232}
-  selectedCommands:
-  - {fileID: 846854234}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1724,17 +1762,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
-    y: 70
-    width: 110.19
+    x: 191.17601
+    y: -58.57136
+    width: 135.06
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 0
-  blockName: New Block
+  blockName: Inicio del juego
   description: 
   eventHandler: {fileID: 846854224}
-  commandList: []
+  commandList:
+  - {fileID: 846854237}
+  - {fileID: 846854236}
   suppressAllAutoSelections: 0
 --- !u!4 &846854226
 Transform:
@@ -1857,8 +1897,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Fungus::Fungus.Block
   nodeRect:
     serializedVersion: 2
-    x: 251.2745
-    y: 210.61673
+    x: 505.12082
+    y: -16.85585
     width: 135.66
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1937,6 +1977,146 @@ MonoBehaviour:
   suppressBlockAutoSelect: 0
   clickableObject: {fileID: 109953645}
   waitFrames: 1
+--- !u!114 &846854236
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Call
+  itemId: 17
+  indentLevel: 0
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 846854223}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &846854237
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Say
+  itemId: 16
+  indentLevel: 0
+  storyText: Esto lo digo cuando inicio el juego
+  description: 
+  character: {fileID: 966143284}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &846854238
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Call
+  itemId: 15
+  indentLevel: 0
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 846854223}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &846854239
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Say
+  itemId: 14
+  indentLevel: 0
+  storyText: Probando clickable espejo
+  description: 
+  character: {fileID: 966143284}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &846854240
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49012bdc794e429686c1eff7d9ced90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.ObjectClicked
+  parentBlock: {fileID: 846854241}
+  suppressBlockAutoSelect: 0
+  clickableObject: {fileID: 1664710728}
+  waitFrames: 1
+--- !u!114 &846854241
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Block
+  nodeRect:
+    serializedVersion: 2
+    x: 747.9775
+    y: 86.440765
+    width: 150.45
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 13
+  blockName: Clickeable/Espejo
+  description: 
+  eventHandler: {fileID: 846854240}
+  commandList:
+  - {fileID: 846854239}
+  - {fileID: 846854238}
+  suppressAllAutoSelections: 0
 --- !u!1 &888179798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,9 +2581,14 @@ MonoBehaviour:
   ratioPerspectiva: 10
   minPers: 0.35
   maxPers: 0.9
+  idleCursor: {fileID: 2800000, guid: 4e43c476b4a7a49a08c37378fb01ce99, type: 3}
+  interactCursor: {fileID: 2800000, guid: f08a4c27d7efe4aa6a35348a4e8aec8f, type: 3}
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!212 &966143288
 SpriteRenderer:
   serializedVersion: 2
@@ -2783,7 +2968,7 @@ GameObject:
   - component: {fileID: 1472172464}
   - component: {fileID: 1472172463}
   m_Layer: 0
-  m_Name: barrera1 (1)
+  m_Name: barreraEspejo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2823,7 +3008,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.727852, y: -0.44616643}
+  m_Offset: {x: 1.5774988, y: -0.44616643}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2833,7 +3018,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.7087705, y: 0.81489867}
+  m_Size: {x: 3.3198392, y: 0.81489867}
   m_EdgeRadius: 0
 --- !u!4 &1472172464
 Transform:
@@ -2861,7 +3046,7 @@ GameObject:
   - component: {fileID: 1593444704}
   - component: {fileID: 1593444703}
   m_Layer: 0
-  m_Name: barrera1 (3)
+  m_Name: barreraAbajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2928,6 +3113,101 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.494}
+--- !u!1 &1664710726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664710729}
+  - component: {fileID: 1664710728}
+  - component: {fileID: 1664710727}
+  m_Layer: 3
+  m_Name: EspejoClickable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1664710727
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664710726}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.379964, y: 0.74239075}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.227576, y: 2.4847817}
+  m_EdgeRadius: 0
+--- !u!114 &1664710728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664710726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc03961113fa349c09cb06ef2911013d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Clickable2D
+  clickEnabled: 1
+  hoverCursor: {fileID: 0}
+  useEventSystem: 0
+  activateDistance: 1.5
+--- !u!4 &1664710729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664710726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.37, y: 1.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738603928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,5 +3307,7 @@ SceneRoots:
   - {fileID: 687021495}
   - {fileID: 1348524607}
   - {fileID: 966143289}
+  - {fileID: 823943600}
   - {fileID: 1194643678}
   - {fileID: 677439420}
+  - {fileID: 1664710729}

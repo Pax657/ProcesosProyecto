@@ -48,13 +48,13 @@ namespace Fungus
 
         protected virtual void DoPointerEnter()
         {
-            ChangeCursor(hoverCursor);
+            //ChangeCursor(hoverCursor);
         }
 
         protected virtual void DoPointerExit()
         {
             // Always reset the mouse cursor to be on the safe side
-            SetMouseCursor.ResetMouseCursor();
+            //SetMouseCursor.ResetMouseCursor();
         }
 
         #region Legacy OnMouseX methods

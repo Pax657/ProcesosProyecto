@@ -1,3 +1,5 @@
+using Fungus;
+using System.Collections;
 using UnityEngine;
 
 public class Movimiento : MonoBehaviour
@@ -7,20 +9,34 @@ public class Movimiento : MonoBehaviour
     public bool inDialogue;
 
     private SpriteRenderer spriteRenderer;
-   
+
+    [Space(10)]
 
     public float speed;
 
     private Vector3 escalaInicial;
 
+    [Space(20)]
+
     public Transform yCerca;
     public Transform yLejos;
+
+    [Space(20)]
 
     public float perspectiva;
     public float ratioPerspectiva;
     public float minPers, maxPers;
 
+    [Space(20)]
+
+    public Texture2D idleCursor;
+    public Texture2D interactCursor;
+    private Texture2D currentCursor;
+    
+    [Space(30)]
+
     public LayerMask floorLayer;
+    public LayerMask interactableLayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +52,7 @@ public class Movimiento : MonoBehaviour
         if (!inDialogue)
         {
             clickMoverse();
+            UpdateCursor();
         }
         cambioPerspectiva();
         ajusteLayers();
@@ -74,19 +91,33 @@ public class Movimiento : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity, floorLayer); //Hacemos el raycast manualmente, sólo revisamos el floorLayer
+            //Revisamos primero interactuables
+            Collider2D hitInteractable = Physics2D.OverlapPoint(mousePos2D, interactableLayer);
 
-            if (hit.collider != null)
+            if (hitInteractable != null)
             {
-                seguir = hit.collider.ClosestPoint(mousePos2D); //Nos movemos
+                Clickable2D clickable = hitInteractable.GetComponent<Clickable2D>();
+
+                if (clickable != null)
+                {
+                    StartCoroutine(MoveAndInteract(clickable));
+                    return;
+                }
+            }
+
+            //Tras esto, revisamos si es suelo
+            RaycastHit2D hitFloor = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity, floorLayer);
+
+            if (hitFloor.collider != null)
+            {
+                seguir = hitFloor.collider.ClosestPoint(mousePos2D);
             }
         }
 
         transform.position = Vector2.MoveTowards(transform.position, seguir, speed * Time.deltaTime);
-
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
         float distance = Vector2.Distance(transform.position, seguir);
 
@@ -94,6 +125,45 @@ public class Movimiento : MonoBehaviour
         {
             seguir = transform.position;
         }
+    }
+
+    private IEnumerator MoveAndInteract(Clickable2D target)
+    {
+        Vector2 targetPos = target.transform.position;
+
+        // Move towards object (or later: interaction point)
+        seguir = targetPos;
+
+        while (Vector2.Distance(transform.position, targetPos) > target.activateDistance)
+        {
+            yield return null;
+        }
+
+        // Trigger Fungus click AFTER reaching distance
+        target.SendMessage("DoPointerClick", SendMessageOptions.DontRequireReceiver);
+    }
+
+    private void SetCursor(Texture2D newCursor)
+    {
+        if (currentCursor == newCursor) return;
+
+        Cursor.SetCursor(newCursor, Vector2.zero, CursorMode.Auto);
+        currentCursor = newCursor;
+    }
+
+    private void UpdateCursor()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Collider2D hitInteractable = Physics2D.OverlapPoint(mousePos, interactableLayer);
+
+        if (hitInteractable != null)
+        {
+            SetCursor(interactCursor);
+            return;
+        }
+
+        SetCursor(idleCursor);
     }
 
     public void exitDialogue()
