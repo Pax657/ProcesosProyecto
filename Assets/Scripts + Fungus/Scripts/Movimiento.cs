@@ -19,7 +19,8 @@ public class Movimiento : MonoBehaviour
     public float perspectiva;
     public float ratioPerspectiva;
     public float minPers, maxPers;
-    
+
+    public LayerMask floorLayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,7 +39,6 @@ public class Movimiento : MonoBehaviour
         }
         cambioPerspectiva();
         ajusteLayers();
-        Debug.Log(this.transform.localScale);
     }
 
     /*private void OnCollisionStay2D(Collision2D collision)
@@ -71,17 +71,29 @@ public class Movimiento : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity, floorLayer); //Hacemos el raycast manualmente, sólo revisamos el floorLayer
 
-            if (hit.collider != null && hit.collider.CompareTag("floor"))
+            if (hit.collider != null)
             {
-                seguir = hit.point;
+                seguir = hit.collider.ClosestPoint(mousePos2D); //Nos movemos
             }
         }
 
         transform.position = Vector2.MoveTowards(transform.position, seguir, speed * Time.deltaTime);
+
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        float distance = Vector2.Distance(transform.position, seguir);
+
+        if (distance < 0.8f) //Evitamos vibrar si no podemos pasar
+        {
+            seguir = transform.position;
+        }
     }
 
     public void exitDialogue()
