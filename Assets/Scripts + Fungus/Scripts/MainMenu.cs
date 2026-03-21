@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,27 +7,46 @@ public class MenuPrincipal : MonoBehaviour
     // Nombre de la escena del juego
     public string nombreEscenaJuego = "SampleScene";
 
+    public static fadeInOut Instance;
+
     // Botón Jugar
     public void Jugar()
     {
-        SceneManager.LoadScene(nombreEscenaJuego);
+        FadeAndLoad(nombreEscenaJuego);
     }
 
     // Botón Salir
     public void Salir()
     {
         Debug.Log("Saliendo del juego...");
-        Application.Quit();
+        fadeSalir();
     }
 
     public void Creditos()
     {
-        SceneManager.LoadScene("Creditos");
+        FadeAndLoad("Creditos");
     }
 
     public void volverMenu()
     {
-        Debug.Log("Volviendo al menu...");
-        SceneManager.LoadScene("MainMenu");
+        FadeAndLoad("MainMenu");
     }
+
+    public void FadeAndLoad(string sceneName)
+    {
+        StartCoroutine(FadeAndLoadRoutine(sceneName));
+    }
+
+    private IEnumerator FadeAndLoadRoutine(string sceneName)
+    {
+        yield return StartCoroutine(fadeInOut.Instance.FadeOut());
+
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private IEnumerator fadeSalir()
+    {
+        yield return StartCoroutine(fadeInOut.Instance.FadeIn());
+        Application.Quit();
+}
 }
