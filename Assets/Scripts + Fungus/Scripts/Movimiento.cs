@@ -41,10 +41,11 @@ public class Movimiento : MonoBehaviour
         Debug.Log(this.transform.localScale);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    /*private void OnCollisionStay2D(Collision2D collision)
     {
         seguir = transform.localPosition;
     }
+    */
 
     private void cambioPerspectiva()
     {
@@ -68,14 +69,19 @@ public class Movimiento : MonoBehaviour
 
     private void clickMoverse()
     {
-        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         if (Input.GetMouseButtonDown(0))
         {
-            seguir = new Vector2(mousePosition.x, mousePosition.y);
+            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.CompareTag("floor"))
+            {
+                seguir = hit.point;
+            }
         }
 
-        transform.localPosition = Vector2.MoveTowards(transform.position, seguir, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, seguir, speed * Time.deltaTime);
     }
 
     public void exitDialogue()

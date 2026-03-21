@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Floor
   - yCerca
   - yLejos
+  - floor
   layers:
   - Default
   - TransparentFX
@@ -44,7 +44,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Floor
+  - name: floor
     uniqueID: 3040331257
     locked: 0
   - name: Main
