@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pausePanel; // Asigna aquí tu panel desde el inspector
-    private bool isPaused = false;
+    public RectTransform pausePanel; // Mejor usar RectTransform para UI
     public Movimiento jugador;
 
-    private Animator animator;
+    private bool isPaused = false;
+
+    public Vector2 hiddenPosition = new Vector2(0, 800); // fuera de pantalla (arriba)
+    public Vector2 visiblePosition = new Vector2(0, 0);  // posición visible
+    public float speed = 10f;
+
+    private Vector2 targetPosition;
 
     void Start()
     {
-        pausePanel.SetActive(false); // Asegura que empieza oculto
+        pausePanel.anchoredPosition = hiddenPosition;
+        targetPosition = hiddenPosition;
     }
 
     void Update()
@@ -18,28 +24,31 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
-            animator = GetComponent<Animator>(); // Asegúrate de que el componente Animator esté asignado
         }
+
+        // Movimiento suave del panel
+        pausePanel.anchoredPosition = Vector2.Lerp(
+            pausePanel.anchoredPosition,
+            targetPosition,
+            Time.unscaledDeltaTime * speed
+        );
     }
 
     void TogglePause()
     {
         isPaused = !isPaused;
-        pausePanel.SetActive(isPaused);
-        jugador.seguir = jugador.transform.localPosition; // Detiene el movimiento del jugador al pausar
-        animator.SetBool("IsPaused", isPaused);
-
-        Time.timeScale = isPaused ? 0f : 1f;
 
         if (isPaused)
         {
-            Time.timeScale = 0f; // Pausa el juego
+            targetPosition = visiblePosition; // baja
+            Time.timeScale = 0f;
         }
         else
         {
-            Time.timeScale = 1f; // Reanuda el juego
+            targetPosition = hiddenPosition; // sube
+            Time.timeScale = 1f;
         }
 
-
+        jugador.seguir = jugador.transform.localPosition;
     }
 }
