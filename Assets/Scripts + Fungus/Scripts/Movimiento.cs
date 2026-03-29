@@ -42,6 +42,7 @@ public class Movimiento : MonoBehaviour
     [Header("Layers")]
     public LayerMask floorLayer;
     public LayerMask interactableLayer;
+    public LayerMask obstacleLayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -119,7 +120,33 @@ public class Movimiento : MonoBehaviour
             }
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, seguir, speed * Time.deltaTime);
+        Vector2 currentPos = transform.position;
+        Vector2 direction = seguir - currentPos;
+
+        if (direction.magnitude > 0.01f)
+        {
+
+            RaycastHit2D hit = Physics2D.Raycast(currentPos, direction.normalized, direction.magnitude, obstacleLayer);
+
+            if (hit.collider == null)
+            {
+                // Nothing in the way → move straight
+                transform.position = Vector2.MoveTowards(currentPos, seguir, speed * Time.deltaTime);
+            }
+            else
+            {
+                // Slide along obstacle
+                float slideFactor = 0.5f;
+
+                Vector2 tangent = Vector2.Perpendicular(hit.normal);
+                Vector2 slideDir = Vector2.Dot(direction, tangent) * tangent.normalized * slideFactor;
+
+                Vector2 moveDir = direction.normalized;
+                Vector2 finalDir = (moveDir + slideDir).normalized;
+
+                transform.position = currentPos + finalDir * speed * Time.deltaTime;
+            }
+        }
     }
 
     public void OnCollisionStay2D(UnityEngine.Collision2D collision)
