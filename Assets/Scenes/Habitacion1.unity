@@ -568,7 +568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &266063141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,7 +1989,6 @@ GameObject:
   - component: {fileID: 846854226}
   - component: {fileID: 846854221}
   - component: {fileID: 846854225}
-  - component: {fileID: 846854224}
   - component: {fileID: 846854223}
   - component: {fileID: 846854222}
   - component: {fileID: 846854228}
@@ -2008,7 +2007,6 @@ GameObject:
   - component: {fileID: 846854236}
   - component: {fileID: 846854250}
   - component: {fileID: 846854249}
-  - component: {fileID: 846854251}
   - component: {fileID: 846854248}
   - component: {fileID: 846854247}
   - component: {fileID: 846854246}
@@ -2016,6 +2014,12 @@ GameObject:
   - component: {fileID: 846854244}
   - component: {fileID: 846854243}
   - component: {fileID: 846854242}
+  - component: {fileID: 846854251}
+  - component: {fileID: 846854254}
+  - component: {fileID: 846854255}
+  - component: {fileID: 846854253}
+  - component: {fileID: 846854252}
+  - component: {fileID: 846854256}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -2036,7 +2040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 13.560153, y: 258.6139}
+  scrollPos: {x: 37.736126, y: 308.06406}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 403
@@ -2050,7 +2054,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 846854225}
   selectedCommands:
-  - {fileID: 846854236}
+  - {fileID: 846854256}
   variables: []
   description: 
   stepPause: 0
@@ -2117,21 +2121,6 @@ MonoBehaviour:
   commandList:
   - {fileID: 846854222}
   suppressAllAutoSelections: 0
---- !u!114 &846854224
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846854220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 846854225}
-  suppressBlockAutoSelect: 0
-  waitForFrames: 1
 --- !u!114 &846854225
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2155,15 +2144,15 @@ MonoBehaviour:
   itemId: 0
   blockName: Inicio del juego
   description: El personaje puede hablar cuando inicia el juego
-  eventHandler: {fileID: 846854224}
+  eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 846854251}
   - {fileID: 846854237}
   - {fileID: 846854250}
   - {fileID: 846854249}
   - {fileID: 846854248}
   - {fileID: 846854247}
   - {fileID: 846854246}
+  - {fileID: 846854256}
   - {fileID: 846854245}
   - {fileID: 846854244}
   - {fileID: 846854243}
@@ -2513,7 +2502,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &846854242
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2540,7 +2529,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &846854243
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2568,7 +2557,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &846854244
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2595,7 +2584,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &846854245
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2613,7 +2602,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &846854246
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2625,8 +2614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Fungus::Fungus.Say
   itemId: 23
   indentLevel: 0
-  storyText: "Espera un momento, si duele significa que no estoy muerto...Entonces,
-    \xBFd\xF3nde estoy?"
+  storyText: Espera un momento, si duele significa que no estoy muerto...
   description: 
   character: {fileID: 966143284}
   portrait: {fileID: 0}
@@ -2641,7 +2629,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &846854247
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2668,7 +2656,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &846854248
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2686,7 +2674,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &846854249
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2713,7 +2701,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &846854250
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2740,6 +2728,56 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &846854251
 MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Block
+  nodeRect:
+    serializedVersion: 2
+    x: 190.83559
+    y: -159.71265
+    width: 126.3
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 28
+  blockName: startDialogue
+  description: 
+  eventHandler: {fileID: 846854255}
+  commandList:
+  - {fileID: 846854254}
+  - {fileID: 846854253}
+  - {fileID: 846854252}
+  suppressAllAutoSelections: 0
+--- !u!114 &846854252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Call
+  itemId: 31
+  indentLevel: 0
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 846854225}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &846854253
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2750,12 +2788,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Fungus::Fungus.Wait
-  itemId: 20
+  itemId: 30
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
     floatVal: 3
   durationOLD: 0
+--- !u!114 &846854254
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.InvokeMethod
+  itemId: 29
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 966143282}
+  targetComponentAssemblyName: Movimiento, Fungus, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: 'UnityEngine.Component[]'
+  targetComponentText: Movimiento
+  targetMethod: startDialogue
+  targetMethodText: 'startDialogue (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &846854255
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.GameStarted
+  parentBlock: {fileID: 846854251}
+  suppressBlockAutoSelect: 0
+  waitForFrames: 1
+--- !u!114 &846854256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.Say
+  itemId: 32
+  indentLevel: 0
+  storyText: "Entonces... \xBFD\xF3nde estoy?"
+  description: 
+  character: {fileID: 966143284}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &888179798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,6 +3856,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1445680781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1445680782}
+  m_Layer: 0
+  m_Name: Pathfinding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1445680782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445680781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.52952, y: -0.20164, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1472172462
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,6 +4303,7 @@ SceneRoots:
   - {fileID: 846854226}
   - {fileID: 888179809}
   - {fileID: 1279222623}
+  - {fileID: 1445680782}
   - {fileID: 1311993203}
   - {fileID: 353734979}
   - {fileID: 666773106}

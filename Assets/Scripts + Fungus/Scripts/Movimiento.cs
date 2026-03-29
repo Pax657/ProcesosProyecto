@@ -14,12 +14,13 @@ public class Movimiento : MonoBehaviour
 
     public float speed;
 
-    private Vector3 escalaInicial;
+ 
 
     [Space(20)]
 
     public Transform yCerca;
     public Transform yLejos;
+    private Vector3 escalaInicial;
 
     [Space(20)]
 
@@ -169,5 +170,10 @@ public class Movimiento : MonoBehaviour
     public void exitDialogue()
     {
         inDialogue = false;
+    }
+
+    public void startDialogue()
+    {
+        inDialogue = true;
     }
 }
