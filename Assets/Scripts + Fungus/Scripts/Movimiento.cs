@@ -16,26 +16,30 @@ public class Movimiento : MonoBehaviour
 
  
 
-    [Space(20)]
+    [Space(15)]
 
+    [Header("Escala")]
     public Transform yCerca;
     public Transform yLejos;
     private Vector3 escalaInicial;
 
-    [Space(20)]
+    [Space(15)]
 
+    [Header("Perspectiva")]
     public float perspectiva;
     public float ratioPerspectiva;
     public float minPers, maxPers;
 
-    [Space(20)]
+    [Space(15)]
 
+    [Header("Cursores")]
     public Texture2D idleCursor;
     public Texture2D interactCursor;
     private Texture2D currentCursor;
     
-    [Space(30)]
+    [Space(20)]
 
+    [Header("Layers")]
     public LayerMask floorLayer;
     public LayerMask interactableLayer;
 
