@@ -1,6 +1,9 @@
 using Fungus;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using System;
 
 public class Movimiento : MonoBehaviour
 {
@@ -130,12 +133,11 @@ public class Movimiento : MonoBehaviour
 
             if (hit.collider == null)
             {
-                // Nothing in the way → move straight
                 transform.position = Vector2.MoveTowards(currentPos, seguir, speed * Time.deltaTime);
             }
             else
             {
-                // Slide along obstacle
+                //Deslizamiento en caso de obstáculo
                 float slideFactor = 0.5f;
 
                 Vector2 tangent = Vector2.Perpendicular(hit.normal);
@@ -185,6 +187,22 @@ public class Movimiento : MonoBehaviour
 
     private void UpdateCursor()
     {
+        //Revisa elementos de la UI primero
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.GetComponentInParent<Clickable2D>() != null)
+            {
+                SetCursor(interactCursor);
+                return;
+            }
+        }
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Collider2D hitInteractable = Physics2D.OverlapPoint(mousePos, interactableLayer);

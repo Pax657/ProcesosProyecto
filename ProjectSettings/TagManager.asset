@@ -8,6 +8,7 @@ TagManager:
   - yLejos
   - floor
   - Resaltable
+  - sacudible
   layers:
   - Default
   - TransparentFX
