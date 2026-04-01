@@ -8,9 +8,39 @@ public class puzzleManager : MonoBehaviour
     public hueco[] slots;
     public string correctWord = "ROSA";
 
+    public bool active = false;
+    private bool completado = false;
+
+    public Canvas canvas;
+    public GameObject armario;
+
+    public Movimiento jugador;
+
     void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        active = false;
+        canvas.gameObject.SetActive(false);
+    }
+
+    public void ActivarPuzle()
+    {
+        active = true;
+        armario.SetActive(false);
+        canvas.gameObject.SetActive(true);
+        jugador.inDialogue = true;
+    }
+
+    public void DesactivarPuzle()
+    {
+        active = false;
+        armario.SetActive(true);
+        canvas.gameObject.SetActive(false);
+        jugador.inDialogue = false;
     }
 
     public void CheckPuzzle()
@@ -35,6 +65,8 @@ public class puzzleManager : MonoBehaviour
         if (formedWord == correctWord)
         {
             Debug.Log("Correcto");
+            completado = true;
+            DesactivarPuzle();
         }
         else
         {
@@ -50,13 +82,13 @@ public class puzzleManager : MonoBehaviour
 
     IEnumerator ResetAnimation()
     {
-        // 🔴 1. Vibrar slots
+        //Vibrar huecos
         foreach (var slot in slots)
         {
             StartCoroutine(Shake(slot.transform));
         }
 
-        // 🔴 2. Vibrar letras
+        //Vibrar letras
         arrastrarBotones[] letters = FindObjectsOfType<arrastrarBotones>();
 
         foreach (var letter in letters)
@@ -64,10 +96,9 @@ public class puzzleManager : MonoBehaviour
             StartCoroutine(Shake(letter.transform));
         }
 
-        // ⏳ Esperar a que termine el shake
         yield return new WaitForSeconds(0.4f);
 
-        // 🔻 3. Liberar slots + volver letras suavemente
+        //Mover letras a huecos
         foreach (var letter in letters)
         {
             letter.ReturnToStartSmooth();
