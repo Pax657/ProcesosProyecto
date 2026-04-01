@@ -123,6 +123,9 @@ public class Movimiento : MonoBehaviour
             }
         }
 
+        float offsetY = spriteRenderer.bounds.extents.y;
+        Vector2 targetConOffset = seguir + new Vector2(0, offsetY - 0.2f);
+
         Vector2 currentPos = transform.position;
         Vector2 direction = seguir - currentPos;
 
@@ -133,7 +136,7 @@ public class Movimiento : MonoBehaviour
 
             if (hit.collider == null)
             {
-                transform.position = Vector2.MoveTowards(currentPos, seguir, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(currentPos, targetConOffset, speed * Time.deltaTime);
             }
             else
             {

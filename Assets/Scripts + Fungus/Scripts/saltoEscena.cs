@@ -13,8 +13,6 @@ public class saltoEscena : MonoBehaviour
     {
         Debug.Log("Cambio escena a: " + nombreEscena);
 
-        gameManager.nextSpawnPoint = spawnDestino;
-
         FadeAndLoad(nombreEscena);
     }
 
