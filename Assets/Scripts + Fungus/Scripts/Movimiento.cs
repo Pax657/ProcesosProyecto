@@ -129,6 +129,15 @@ public class Movimiento : MonoBehaviour
         Vector2 currentPos = transform.position;
         Vector2 direction = seguir - currentPos;
 
+        //flipeamos el modelo según la dirección del movimiento
+        if (Mathf.Abs(direction.x) > 0.01f) //evitamos vibraciones
+        {
+            if (direction.x > 0)
+                spriteRenderer.flipX = true; //mirando a la derecha
+            else
+                spriteRenderer.flipX = false;  //mirando a la izquierda
+        }
+
         if (direction.magnitude > 0.01f)
         {
 
