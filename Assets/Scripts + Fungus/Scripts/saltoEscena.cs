@@ -7,8 +7,6 @@ public class saltoEscena : MonoBehaviour
     //Nombre de la escena
     public string nombreEscena = "SampleScene";
 
-    public Transform spawnDestino;
-
     public void cambioEscena()
     {
         Debug.Log("Cambio escena a: " + nombreEscena);

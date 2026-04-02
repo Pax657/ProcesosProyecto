@@ -73,7 +73,7 @@ public class Movimiento : MonoBehaviour
     }
     */
 
-    private void cambioPerspectiva()
+    public void cambioPerspectiva()
     {
         float t = Mathf.InverseLerp(yLejos.position.y, yCerca.position.y, transform.position.y);
 

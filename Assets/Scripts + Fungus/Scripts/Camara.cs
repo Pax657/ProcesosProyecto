@@ -33,4 +33,10 @@ public class Camara : MonoBehaviour
 
         transform.position = Vector3.SmoothDamp(transform.position, playerPos, ref velocity, smoothTime);
     }
+
+    public void SetBounds(Vector2 min, Vector2 max)
+    {
+        minBounds = min;
+        maxBounds = max;
+    }
 }
