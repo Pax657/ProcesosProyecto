@@ -1,32 +1,50 @@
 using UnityEngine;
+using Fungus;
 
-public class PickupItem : MonoBehaviour
+public class PickupItem : Clickable2D
 {
-    public Sprite itemSprite; // el icono que aparecerá en el inventario
-    private Inventory inventory;
+    [Header("Item")]
+    public Sprite itemSprite;
 
-    void Start()
-    {
-        // Busca el inventario en la escena
-        inventory = FindObjectOfType<Inventory>();
-    }
+    [Header("Referencia Inventario")]
+    public Inventory inventory;
 
-    void OnMouseDown()
+    [Header("Comportamiento")]
+    public bool destroyOnPickup = true;
+
+    protected override void DoPointerClick()
     {
-        // Cuando haces click sobre el objeto
-        if (inventory != null)
+        base.DoPointerClick(); // mantiene compatibilidad con Fungus
+
+        if (!clickEnabled)
+            return;
+
+        if (inventory == null)
         {
-            bool added = inventory.AddItem(itemSprite);
+            Debug.LogWarning("Inventory no asignado en " + gameObject.name);
+            return;
+        }
 
-            if (added)
+        if (itemSprite == null)
+        {
+            Debug.LogWarning("Sprite no asignado en " + gameObject.name);
+            return;
+        }
+
+        bool added = inventory.AddItem(itemSprite);
+
+        if (added)
+        {
+            Debug.Log("Item añadido al inventario");
+
+            if (destroyOnPickup)
             {
-                // Si se añadió correctamente, eliminamos el objeto
                 Destroy(gameObject);
             }
-            else
-            {
-                Debug.Log("No se pudo recoger el objeto");
-            }
+        }
+        else
+        {
+            Debug.Log("No se pudo añadir el item (inventario lleno)");
         }
     }
 }
