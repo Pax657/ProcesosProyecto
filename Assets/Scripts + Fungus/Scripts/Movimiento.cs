@@ -1,9 +1,8 @@
 using Fungus;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
-using System;
 
 public class Movimiento : MonoBehaviour
 {
@@ -12,12 +11,13 @@ public class Movimiento : MonoBehaviour
     public bool inDialogue;
 
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     [Space(10)]
 
     public float speed;
 
- 
+
 
     [Space(15)]
 
@@ -39,7 +39,7 @@ public class Movimiento : MonoBehaviour
     public Texture2D idleCursor;
     public Texture2D interactCursor;
     private Texture2D currentCursor;
-    
+
     [Space(20)]
 
     [Header("Layers")]
@@ -47,11 +47,18 @@ public class Movimiento : MonoBehaviour
     public LayerMask interactableLayer;
     public LayerMask obstacleLayer;
 
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+        animator.SetBool("caminando", false);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         seguir = transform.localPosition;
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         escalaInicial = transform.localScale;
     }
 
@@ -66,12 +73,6 @@ public class Movimiento : MonoBehaviour
         cambioPerspectiva();
         ajusteLayers();
     }
-
-    /*private void OnCollisionStay2D(Collision2D collision)
-    {
-        seguir = transform.localPosition;
-    }
-    */
 
     public void cambioPerspectiva()
     {
@@ -95,18 +96,17 @@ public class Movimiento : MonoBehaviour
 
     private void clickMoverse()
     {
+        // Detectar click izquierdo
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-            //Revisamos primero interactuables
+            // Primero revisamos interactuables
             Collider2D hitInteractable = Physics2D.OverlapPoint(mousePos2D, interactableLayer);
-
             if (hitInteractable != null)
             {
                 Clickable2D clickable = hitInteractable.GetComponent<Clickable2D>();
-
                 if (clickable != null)
                 {
                     StartCoroutine(MoveAndInteract(clickable));
@@ -114,52 +114,65 @@ public class Movimiento : MonoBehaviour
                 }
             }
 
-            //Tras esto, revisamos si es suelo
+            // Revisamos si es suelo
             RaycastHit2D hitFloor = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity, floorLayer);
-
             if (hitFloor.collider != null)
             {
+                // Actualizamos el objetivo al click
                 seguir = hitFloor.collider.ClosestPoint(mousePos2D);
             }
         }
 
-        float offsetY = spriteRenderer.bounds.extents.y;
-        Vector2 targetConOffset = seguir + new Vector2(0, offsetY - 0.2f);
-
         Vector2 currentPos = transform.position;
         Vector2 direction = seguir - currentPos;
 
-        //flipeamos el modelo según la dirección del movimiento
-        if (Mathf.Abs(direction.x) > 0.01f) //evitamos vibraciones
+        // Evitamos el offset inicial que generaba movimiento “fantasma”
+        float distance = direction.magnitude;
+        if (distance > 0.01f)
         {
-            if (direction.x > 0)
-                spriteRenderer.flipX = true; //mirando a la derecha
-            else
-                spriteRenderer.flipX = false;  //mirando a la izquierda
+            // Aplicamos el offset solo si ya hay un objetivo distinto de la posición actual
+            float offsetY = spriteRenderer.bounds.extents.y - 0.2f;
+            direction.y += offsetY;
         }
 
-        if (direction.magnitude > 0.01f)
-        {
+        // 🔹 DISTANCIA REAL (con offset aplicado)
+        float realDistance = direction.magnitude;
 
-            RaycastHit2D hit = Physics2D.Raycast(currentPos, direction.normalized, direction.magnitude, obstacleLayer);
+        // Flip del sprite según dirección
+        if (Mathf.Abs(direction.x) > 0.01f)
+            spriteRenderer.flipX = direction.x > 0;
+
+        // Movimiento
+        if (realDistance > 0.01f)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(currentPos, direction.normalized, realDistance, obstacleLayer);
+            Vector2 moveDelta;
 
             if (hit.collider == null)
             {
-                transform.position = Vector2.MoveTowards(currentPos, targetConOffset, speed * Time.deltaTime);
+                moveDelta = direction.normalized * speed * Time.deltaTime;
             }
             else
             {
-                //Deslizamiento en caso de obstáculo
+                // Deslizamiento en caso de obstáculo
                 float slideFactor = 0.5f;
-
                 Vector2 tangent = Vector2.Perpendicular(hit.normal);
                 Vector2 slideDir = Vector2.Dot(direction, tangent) * tangent.normalized * slideFactor;
-
-                Vector2 moveDir = direction.normalized;
-                Vector2 finalDir = (moveDir + slideDir).normalized;
-
-                transform.position = currentPos + finalDir * speed * Time.deltaTime;
+                moveDelta = (direction.normalized + slideDir).normalized * speed * Time.deltaTime;
             }
+
+            transform.position = currentPos + moveDelta;
+        }
+
+        if (realDistance > 0.1f)
+        {
+            animator.SetBool("caminando", true);
+            Debug.Log("Caminando hacia: " + seguir);
+        }
+        else
+        {
+            animator.SetBool("caminando", false);
+            Debug.Log("Detenido en: " + seguir);
         }
     }
 
