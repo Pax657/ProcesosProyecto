@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class cambioFondo : MonoBehaviour
 {
@@ -17,17 +19,31 @@ public class cambioFondo : MonoBehaviour
 
         if (mov != null)
         {
-            //Teletransportar
-            mov.transform.position = puntoDestino.position;
-            mov.cambioPerspectiva();
-            mov.seguir = mov.transform.position;
-
-            //Cambiar referencias de perspectiva
-            mov.yCerca = nuevoYCerca;
-            mov.yLejos = nuevoYLejos;
-
-            //Mover camara
-            cam.SetBounds(nuevoMinBounds, nuevoMaxBounds);
+            StartCoroutine(CambioConFade(mov));
         }
+    }
+
+    private IEnumerator CambioConFade(Movimiento mov)
+    {
+        Camara cam = Camera.main.GetComponent<Camara>();
+
+        //Fade out
+        yield return StartCoroutine(fadeInOut.Instance.FadeOut(2));
+
+        //Teletransportar
+        mov.transform.position = puntoDestino.position;
+        mov.cambioPerspectiva();
+        mov.seguir = mov.transform.position;
+
+        //Cambiar referencias de perspectiva
+        mov.yCerca = nuevoYCerca;
+        mov.yLejos = nuevoYLejos;
+
+        //Mover camara
+        cam.SetBounds(nuevoMinBounds, nuevoMaxBounds);
+
+        yield return new WaitForSeconds(1f);
+        //Fade in
+        yield return StartCoroutine(fadeInOut.Instance.FadeIn(2));
     }
 }

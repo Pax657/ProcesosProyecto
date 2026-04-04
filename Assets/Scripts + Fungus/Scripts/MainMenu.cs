@@ -39,14 +39,14 @@ public class MenuPrincipal : MonoBehaviour
 
     private IEnumerator FadeAndLoadRoutine(string sceneName)
     {
-        yield return StartCoroutine(fadeInOut.Instance.FadeOut());
+        yield return StartCoroutine(fadeInOut.Instance.FadeOut(0.1f));
 
         SceneManager.LoadScene(sceneName);
     }
 
     private IEnumerator fadeSalir()
     {
-        yield return StartCoroutine(fadeInOut.Instance.FadeIn());
+        yield return StartCoroutine(fadeInOut.Instance.FadeIn(2f));
         Application.Quit();
 }
 }

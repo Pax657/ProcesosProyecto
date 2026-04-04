@@ -11,7 +11,7 @@ public class fadeInOut : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(fadeInOut.Instance.FadeIn());
+        StartCoroutine(fadeInOut.Instance.FadeIn(fadeInSpeed));
     }
 
 
@@ -20,22 +20,22 @@ public class fadeInOut : MonoBehaviour
         Instance = this;
     }
 
-    public IEnumerator FadeIn()
+    public IEnumerator FadeIn(float fadeIn)
     {
         while (canvasGroup.alpha > 0)
         {
-            canvasGroup.alpha -= Time.deltaTime * fadeInSpeed;
+            canvasGroup.alpha -= Time.deltaTime * fadeIn;
             yield return null;
         }
 
         canvasGroup.alpha = 0;
     }
 
-    public IEnumerator FadeOut()
+    public IEnumerator FadeOut(float fadeOut)
     {
         while (canvasGroup.alpha < 1)
         {
-            canvasGroup.alpha += Time.deltaTime * fadeOutSpeed;
+            canvasGroup.alpha += Time.deltaTime * fadeOut;
             yield return null;
         }
 

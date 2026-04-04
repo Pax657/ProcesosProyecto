@@ -21,7 +21,7 @@ public class saltoEscena : MonoBehaviour
 
     private IEnumerator FadeAndLoadRoutine(string sceneName)
     {
-        yield return StartCoroutine(fadeInOut.Instance.FadeOut());
+        yield return StartCoroutine(fadeInOut.Instance.FadeOut(2));
         SceneManager.LoadScene(sceneName);
     }
 }
