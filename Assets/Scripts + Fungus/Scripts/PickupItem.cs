@@ -4,13 +4,14 @@ using Fungus;
 public class PickupItem : Clickable2D
 {
     [Header("Item")]
-    public Sprite itemSprite;
+    public item item;
 
     [Header("Referencia Inventario")]
     public Inventory inventory;
 
     [Header("Comportamiento")]
     public bool destroyOnPickup = true;
+
 
     protected override void DoPointerClick()
     {
@@ -25,13 +26,13 @@ public class PickupItem : Clickable2D
             return;
         }
 
-        if (itemSprite == null)
+        if (item == null)
         {
             Debug.LogWarning("Sprite no asignado en " + gameObject.name);
             return;
         }
 
-        bool added = inventory.AddItem(itemSprite);
+        bool added = inventory.AddItem(item);
 
         if (added)
         {

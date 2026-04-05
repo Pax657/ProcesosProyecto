@@ -1,20 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-public class puzzleManager : MonoBehaviour
+public class puzzleManagerArmario : MonoBehaviour
 {
-    public static puzzleManager Instance;
+    public static puzzleManagerArmario Instance;
 
     public hueco[] slots;
     public string correctWord = "ROSA";
 
     public bool active = false;
-    private bool completado = false;
 
     public Canvas canvas;
     public GameObject armario;
 
     public Movimiento jugador;
+
+    public item rewardItem;
+    public Inventory inventory;
+    private bool rewardGiven = false;
 
     void Awake()
     {
@@ -65,8 +69,16 @@ public class puzzleManager : MonoBehaviour
         if (formedWord == correctWord)
         {
             Debug.Log("Correcto");
-            completado = true;
+
+            if (!rewardGiven)
+            {
+                inventory.AddItem(rewardItem);
+                rewardGiven = true;
+            }
+
+            
             DesactivarPuzle();
+            gameObject.SetActive(false);
         }
         else
         {

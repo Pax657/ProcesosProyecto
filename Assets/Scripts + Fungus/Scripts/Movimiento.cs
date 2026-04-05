@@ -9,6 +9,7 @@ public class Movimiento : MonoBehaviour
     [HideInInspector]
     public Vector2 seguir;
     public bool inDialogue;
+    public bool puedeMover;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -16,8 +17,6 @@ public class Movimiento : MonoBehaviour
     [Space(10)]
 
     public float speed;
-
-    public bool puedeMover = true;
 
     [Space(15)]
 
@@ -47,6 +46,8 @@ public class Movimiento : MonoBehaviour
     public LayerMask interactableLayer;
     public LayerMask obstacleLayer;
 
+    private PauseMenu pauseMenu;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -58,6 +59,7 @@ public class Movimiento : MonoBehaviour
     {
         seguir = transform.localPosition;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        pauseMenu = FindAnyObjectByType<PauseMenu>();
 
         escalaInicial = transform.localScale;
     }
@@ -70,10 +72,13 @@ public class Movimiento : MonoBehaviour
             clickMoverse();
             UpdateCursor();
         }
+
+        comprobarPausa();
         cambioPerspectiva();
         ajusteLayers();
 
-        if (!puedeMover) return;
+
+        if (inDialogue) animator.SetBool("caminando", false);
     }
 
     public void cambioPerspectiva()
@@ -102,10 +107,9 @@ public class Movimiento : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
-
-
+            /* if (EventSystem.current.IsPointerOverGameObject())
+                 return;
+            */
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
@@ -116,8 +120,11 @@ public class Movimiento : MonoBehaviour
                 Clickable2D clickable = hitInteractable.GetComponent<Clickable2D>();
                 if (clickable != null)
                 {
-                    StartCoroutine(MoveAndInteract(clickable));
-                    return;
+                    if (puedeMover)
+                    {
+                        StartCoroutine(MoveAndInteract(clickable));
+                        return;
+                    }
                 }
             }
 
@@ -132,6 +139,7 @@ public class Movimiento : MonoBehaviour
 
         Vector2 currentPos = transform.position;
         Vector2 direction = seguir - currentPos;
+        Vector2 rawDir = seguir - currentPos;
 
         // Evitamos el offset inicial que generaba movimiento “fantasma”
         float distance = direction.magnitude;
@@ -150,36 +158,39 @@ public class Movimiento : MonoBehaviour
             spriteRenderer.flipX = direction.x > 0;
 
         // Movimiento
-        if (realDistance > 0.01f)
+        if (puedeMover)
         {
-            RaycastHit2D hit = Physics2D.Raycast(currentPos, direction.normalized, realDistance, obstacleLayer);
-            Vector2 moveDelta;
-
-            if (hit.collider == null)
+            if (realDistance > 0.01f)
             {
-                moveDelta = direction.normalized * speed * Time.deltaTime;
+                RaycastHit2D hit = Physics2D.Raycast(currentPos, direction.normalized, realDistance, obstacleLayer);
+                Vector2 moveDelta;
+
+                if (hit.collider == null)
+                {
+                    moveDelta = direction.normalized * speed * Time.deltaTime;
+                }
+                else
+                {
+                    // Deslizamiento en caso de obstáculo
+                    float slideFactor = 0.5f;
+                    Vector2 tangent = Vector2.Perpendicular(hit.normal);
+                    Vector2 slideDir = Vector2.Dot(direction, tangent) * tangent.normalized * slideFactor;
+                    moveDelta = (direction.normalized + slideDir).normalized * speed * Time.deltaTime;
+                }
+
+                transform.position = currentPos + moveDelta;
+            }
+
+            if (realDistance > 0.1f)
+            {
+                animator.SetBool("caminando", true);
+                //Debug.Log("Caminando hacia: " + seguir);
             }
             else
             {
-                // Deslizamiento en caso de obstáculo
-                float slideFactor = 0.5f;
-                Vector2 tangent = Vector2.Perpendicular(hit.normal);
-                Vector2 slideDir = Vector2.Dot(direction, tangent) * tangent.normalized * slideFactor;
-                moveDelta = (direction.normalized + slideDir).normalized * speed * Time.deltaTime;
+                animator.SetBool("caminando", false);
+                //Debug.Log("Detenido en: " + seguir);
             }
-
-            transform.position = currentPos + moveDelta;
-        }
-
-        if (realDistance > 0.1f)
-        {
-            animator.SetBool("caminando", true);
-            Debug.Log("Caminando hacia: " + seguir);
-        }
-        else
-        {
-            animator.SetBool("caminando", false);
-            Debug.Log("Detenido en: " + seguir);
         }
     }
 
@@ -248,13 +259,20 @@ public class Movimiento : MonoBehaviour
         SetCursor(idleCursor);
     }
 
+    private void comprobarPausa()
+    {
+        if (pauseMenu.isPaused) puedeMover = false;
+        if (!pauseMenu.isPaused && !inDialogue) puedeMover = true;
+    }
     public void exitDialogue()
     {
         inDialogue = false;
+        puedeMover = true;
     }
 
     public void startDialogue()
     {
         inDialogue = true;
+        puedeMover = false;
     }
 }

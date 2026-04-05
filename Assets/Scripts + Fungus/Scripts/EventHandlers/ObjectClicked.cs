@@ -71,7 +71,7 @@ namespace Fungus
             }
 
             movimiento.seguir = movimiento.transform.position;
-            movimiento.inDialogue = true;
+            movimiento.startDialogue();
             if (numFrames == 0)
             {
                 ExecuteBlock();

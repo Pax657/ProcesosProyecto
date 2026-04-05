@@ -7,7 +7,8 @@ public class Inventory : MonoBehaviour
     public RectTransform inventoryPanel; // cambiado
     public List<Image> slots;
 
-    private List<Sprite> items = new List<Sprite>();
+    private List<item> items = new List<item>();
+    public item selectedItem;
     private int maxItems = 6;
 
     private bool isOpen = false;
@@ -46,7 +47,7 @@ public class Inventory : MonoBehaviour
         );
     }
 
-    public bool AddItem(Sprite itemSprite)
+    public bool AddItem(item item)
     {
         if (items.Count >= maxItems)
         {
@@ -54,7 +55,7 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        items.Add(itemSprite);
+        items.Add(item);
         UpdateUI();
         return true;
     }
@@ -65,7 +66,7 @@ public class Inventory : MonoBehaviour
         {
             if (i < items.Count)
             {
-                slots[i].sprite = items[i];
+                slots[i].sprite = items[i].icon;
                 slots[i].enabled = true;
             }
             else
@@ -74,5 +75,16 @@ public class Inventory : MonoBehaviour
                 slots[i].enabled = false;
             }
         }
+    }
+
+    public bool HasItem(int index)
+    {
+        return index < items.Count;
+    }
+
+    public void SelectItem(int index)
+    {
+        selectedItem = items[index];
+        Debug.Log("Seleccionado: " + selectedItem.itemName);
     }
 }

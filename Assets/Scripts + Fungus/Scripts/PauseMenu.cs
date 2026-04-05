@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
     public RectTransform pausePanel; // Mejor usar RectTransform para UI
     public Movimiento jugador;
 
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     public Vector2 hiddenPosition = new Vector2(0, 800); // fuera de pantalla (arriba)
     public Vector2 visiblePosition = new Vector2(0, 0);  // posición visible

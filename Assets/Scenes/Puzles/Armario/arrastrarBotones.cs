@@ -46,7 +46,7 @@ public class arrastrarBotones : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         if (closestSlot != null && !closestSlot.IsOccupied())
         {
             SnapToSlot(closestSlot);
-            puzzleManager.Instance.CheckPuzzle();
+            puzzleManagerArmario.Instance.CheckPuzzle();
         }
         else
         {
