@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -42,13 +43,35 @@ public class PauseMenu : MonoBehaviour
         {
             targetPosition = visiblePosition; // baja
             Time.timeScale = 0f;
+
         }
         else
         {
             targetPosition = hiddenPosition; // sube
             Time.timeScale = 1f;
+
         }
 
+    }
+
+    public void Opciones()
+    {
+        SceneManager.LoadScene("Opciones");
+        Debug.Log("CLICK EN OPCIONES");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("CLICK EN MENU");
+    }
+
+    public void Resumir()
+    {
+        Debug.Log("CLICK EN RESUMIR");
+        isPaused = false;
+        targetPosition = hiddenPosition;
+        Time.timeScale = 1f;
         jugador.seguir = jugador.transform.localPosition;
     }
 }

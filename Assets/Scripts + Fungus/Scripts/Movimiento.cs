@@ -17,7 +17,7 @@ public class Movimiento : MonoBehaviour
 
     public float speed;
 
-
+    public bool puedeMover = true;
 
     [Space(15)]
 
@@ -72,6 +72,8 @@ public class Movimiento : MonoBehaviour
         }
         cambioPerspectiva();
         ajusteLayers();
+
+        if (!puedeMover) return;
     }
 
     public void cambioPerspectiva()
@@ -99,6 +101,11 @@ public class Movimiento : MonoBehaviour
         // Detectar click izquierdo
         if (Input.GetMouseButtonDown(0))
         {
+
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
+
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
