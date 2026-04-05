@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796a3f664c7cb65479d827575da828dd, type: 3}
   m_Name: llaveArmario
   m_EditorClassIdentifier: Fungus::item
-  itemName: 
-  icon: {fileID: 0}
+  itemName: llaveArmario
+  icon: {fileID: -4258945407214562051, guid: 34635267ce9cdff45947f0f7125c0221, type: 3}
