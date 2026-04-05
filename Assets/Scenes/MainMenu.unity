@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenFader
   canvasGroup: {fileID: 1567870314}
-  fadeInSpeed: 0.5
+  fadeInSpeed: 5
   fadeOutSpeed: 2
 --- !u!225 &1567870314
 CanvasGroup:
@@ -1653,6 +1653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Fungus::MenuPrincipal
   nombreEscenaJuego: Habitacion1
+  fadeInSpeed: 1
+  fadeOutSpeed: 2
 --- !u!4 &1673974670
 Transform:
   m_ObjectHideFlags: 0

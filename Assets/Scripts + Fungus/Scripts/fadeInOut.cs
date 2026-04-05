@@ -6,8 +6,8 @@ public class fadeInOut : MonoBehaviour
     public static fadeInOut Instance;
 
     public CanvasGroup canvasGroup;
-    public float fadeInSpeed = 0.5f;
-    public float fadeOutSpeed = 2f;
+    public float fadeInSpeed;
+    public float fadeOutSpeed;
 
     private void Start()
     {
@@ -18,6 +18,7 @@ public class fadeInOut : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        StartCoroutine(fadeInOut.Instance.FadeIn(fadeInSpeed));
     }
 
     public IEnumerator FadeIn(float fadeIn)

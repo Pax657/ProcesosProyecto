@@ -9,6 +9,9 @@ public class MenuPrincipal : MonoBehaviour
 
     public static fadeInOut Instance;
 
+    public float fadeInSpeed = 0.1f;
+    public float fadeOutSpeed = 1f;
+
     // Botón Jugar
     public void Jugar()
     {
@@ -39,14 +42,14 @@ public class MenuPrincipal : MonoBehaviour
 
     private IEnumerator FadeAndLoadRoutine(string sceneName)
     {
-        yield return StartCoroutine(fadeInOut.Instance.FadeOut(0.1f));
+        yield return StartCoroutine(fadeInOut.Instance.FadeOut(fadeInSpeed));
 
         SceneManager.LoadScene(sceneName);
     }
 
     private IEnumerator fadeSalir()
     {
-        yield return StartCoroutine(fadeInOut.Instance.FadeIn(2f));
+        yield return StartCoroutine(fadeInOut.Instance.FadeIn(fadeOutSpeed));
         Application.Quit();
 }
 }
