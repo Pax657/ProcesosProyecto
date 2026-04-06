@@ -4,5 +4,6 @@ using UnityEngine;
 public class item : ScriptableObject
 {
     public string itemName;
-    public Sprite icon;
+    public Sprite icon;          // Para UI (inventario)
+    public Texture2D cursor;     // Para cursor
 }

@@ -230,33 +230,39 @@ public class Movimiento : MonoBehaviour
 
     private void UpdateCursor()
     {
-        //Revisa elementos de la UI primero
         PointerEventData pointerData = new PointerEventData(EventSystem.current);
         pointerData.position = Input.mousePosition;
 
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, results);
 
+        bool overInteractable = false;
+
         foreach (RaycastResult result in results)
         {
             if (result.gameObject.GetComponentInParent<Clickable2D>() != null)
             {
-                SetCursor(interactCursor);
-                return;
+                overInteractable = true;
+                break;
             }
         }
 
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        Collider2D hitInteractable = Physics2D.OverlapPoint(mousePos, interactableLayer);
-
-        if (hitInteractable != null)
+        // Prioridad 1: sobre interactuable
+        if (overInteractable)
         {
-            SetCursor(interactCursor);
+            CursorManager.instance.SetCursor(interactCursor, Vector2.zero);
             return;
         }
 
-        SetCursor(idleCursor);
+        // Prioridad 2: item seleccionado
+        if (Inventory.instance != null && Inventory.instance.selectedItem != null)
+        {
+            CursorManager.instance.SetCursor(Inventory.instance.selectedItem.cursor, Inventory.instance.hotspot);
+            return;
+        }
+
+        // Prioridad 3: idle
+        CursorManager.instance.SetCursor(idleCursor, Vector2.zero);
     }
 
     private void comprobarPausa()
