@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Fungus::item
   itemName: llaveArmario
   icon: {fileID: -4258945407214562051, guid: 34635267ce9cdff45947f0f7125c0221, type: 3}
-  cursor: {fileID: 2800000, guid: 34635267ce9cdff45947f0f7125c0221, type: 3}
+  cursor: {fileID: 2800000, guid: b10f7bef69ae9f4448818dc8f9c55d9c, type: 3}
