@@ -1,5 +1,5 @@
-using UnityEngine;
 using Fungus;
+using UnityEngine;
 
 public class PickupItem : Clickable2D
 {
@@ -11,6 +11,8 @@ public class PickupItem : Clickable2D
 
     [Header("Comportamiento")]
     public bool destroyOnPickup = true;
+
+    public bool itemNoTomado = true;
 
 
     protected override void DoPointerClick()
@@ -32,20 +34,24 @@ public class PickupItem : Clickable2D
             return;
         }
 
-        bool added = inventory.AddItem(item);
-
-        if (added)
+        if (itemNoTomado)
         {
+            inventory.AddItem(item);
+
             Debug.Log("Item añadido al inventario");
+
+            itemNoTomado = false;
 
             if (destroyOnPickup)
             {
                 Destroy(gameObject);
             }
+
+            else
+            {
+                Debug.Log("No se pudo añadir el item (inventario lleno)");
+            }
         }
-        else
-        {
-            Debug.Log("No se pudo añadir el item (inventario lleno)");
-        }
+
     }
 }
