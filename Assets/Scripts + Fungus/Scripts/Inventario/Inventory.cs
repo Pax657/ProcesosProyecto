@@ -139,20 +139,29 @@ public class Inventory : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag(interactableTag))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
+
             if (interactable != null)
             {
-                if (selectedItem != null && selectedItem.itemName == "llaveHabitacion"
-                && !string.IsNullOrEmpty(interactable.itemBlock))
+                bool usedItem = false;
+
+                if (selectedItem != null)
                 {
-                    interactable.flowchart.ExecuteBlock(interactable.itemBlock);
+                    foreach (var interaction in interactable.itemInteractions)
+                    {
+                        if (interaction.itemName == selectedItem.itemName)
+                        {
+                            interactable.flowchart.ExecuteBlock(interaction.blockName);
+                            usedItem = true;
+                            break;
+                        }
+                    }
                 }
-                else if (!string.IsNullOrEmpty(interactable.defaultBlock))
+
+                if (!usedItem && !string.IsNullOrEmpty(interactable.defaultBlock))
                 {
                     interactable.flowchart.ExecuteBlock(interactable.defaultBlock);
                 }
             }
-
-            Debug.Log("Interactuando con: " + hit.collider.name);
         }
         else
         {
