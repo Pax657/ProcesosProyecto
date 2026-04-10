@@ -136,6 +136,7 @@ public class Inventory : MonoBehaviour
             Vector2.zero
         );
 
+        Debug.Log("Raycast hit: " + (hit.collider != null ? hit.collider.name : "Nada"));
         if (hit.collider != null && hit.collider.CompareTag(interactableTag))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
