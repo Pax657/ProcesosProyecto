@@ -12,6 +12,12 @@ public class cambioFondo : MonoBehaviour
     public Vector2 nuevoMinBounds;
     public Vector2 nuevoMaxBounds;
 
+    public void cambio()
+    {
+        Movimiento movimiento = FindFirstObjectByType<Movimiento>();
+
+        StartCoroutine(CambioConFade(movimiento));
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         Movimiento mov = other.GetComponent<Movimiento>();
