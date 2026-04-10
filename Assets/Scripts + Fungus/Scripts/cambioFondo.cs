@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Codice.Client.Common.EventTracking.TrackFeatureUseEvent.Features.DesktopGUI.Filters;
 
 public class cambioFondo : MonoBehaviour
 {
@@ -22,12 +21,6 @@ public class cambioFondo : MonoBehaviour
         {
             StartCoroutine(CambioConFade(mov));
         }
-    }
-
-    private void cambioYa()
-    {
-        Movimiento mov = FindFirstObjectByType<Movimiento>();
-        StartCoroutine(CambioConFade(mov));
     }
 
     private IEnumerator CambioConFade(Movimiento mov)

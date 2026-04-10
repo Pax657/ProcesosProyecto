@@ -150,7 +150,6 @@ public class Inventory : MonoBehaviour
                     {
                         if (interaction.itemName == selectedItem.itemName)
                         {
-                            Debug.Log("Bloque default");
                             interactable.flowchart.ExecuteBlock(interaction.blockName);
                             usedItem = true;
                             break;
@@ -160,7 +159,6 @@ public class Inventory : MonoBehaviour
 
                 if (!usedItem && !string.IsNullOrEmpty(interactable.defaultBlock))
                 {
-                    Debug.Log("Bloque elegido");
                     interactable.flowchart.ExecuteBlock(interactable.defaultBlock);
                 }
             }
