@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
     {
         if (!usado)
         {
-            PointManager.Instance.AddPoints(puntos);
+            PointsManager.Instance.AddPoints(puntos);
             usado = true;
         }
     }
