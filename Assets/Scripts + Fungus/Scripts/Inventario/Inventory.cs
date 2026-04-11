@@ -6,7 +6,7 @@ using Fungus; // <- Importar Fungus
 public class Inventory : MonoBehaviour
 {
     public RectTransform inventoryPanel;
-    public List<Image> slots;
+    public List<InventorySlot> slots;
 
     private List<item> items = new List<item>();
     public item selectedItem;
@@ -28,8 +28,8 @@ public class Inventory : MonoBehaviour
     [Header("Combinaciones")]
     public List<Combinacion> combinaciones;
 
-    [Header("Interacción")]
-    public string interactableTag = "Interactuable";
+    //[Header("Interacción")]
+    private string interactableTag = "Interactuable";
 
     [Header("Fungus")]
     public Flowchart flowchart; // <- Referencia al Flowchart
@@ -99,13 +99,11 @@ public class Inventory : MonoBehaviour
         {
             if (i < items.Count)
             {
-                slots[i].sprite = items[i].icon;
-                slots[i].enabled = true;
+                slots[i].SetItem(items[i]);
             }
             else
             {
-                slots[i].sprite = null;
-                slots[i].enabled = false;
+                slots[i].SetItem(null);
             }
         }
     }

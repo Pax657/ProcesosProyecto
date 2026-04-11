@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -16,7 +17,8 @@ public class puzzleManagerArmario : MonoBehaviour
 
     public Movimiento jugador;
 
-    public item rewardItem;
+    public List<RewardEntry> rewards = new List<RewardEntry>();
+
     public Inventory inventory;
     private bool rewardGiven = false;
 
@@ -72,11 +74,18 @@ public class puzzleManagerArmario : MonoBehaviour
 
             if (!rewardGiven)
             {
-                inventory.AddItem(rewardItem);
+                foreach (var reward in rewards)
+                {
+                    for (int i = 0; i < reward.amount; i++)
+                    {
+                        inventory.AddItem(reward.item);
+                    }
+                }
+
                 rewardGiven = true;
             }
 
-            
+
             DesactivarPuzle();
             gameObject.SetActive(false);
         }
