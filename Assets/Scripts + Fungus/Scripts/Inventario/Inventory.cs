@@ -25,6 +25,9 @@ public class Inventory : MonoBehaviour
     public Texture2D defaultCursor;
     public Vector2 hotspot = Vector2.zero;
 
+    [Header("Combinaciones")]
+    public List<Combinacion> combinaciones;
+
     [Header("Interacción")]
     public string interactableTag = "Interactuable";
 
@@ -167,6 +170,50 @@ public class Inventory : MonoBehaviour
         else
         {
             DeselectItem();
+        }
+    }
+
+    public void TryCombine(item draggedItem, item targetItem)
+    {
+        foreach (var combo in combinaciones)
+        {
+            bool match =
+                (combo.itemA == draggedItem && combo.itemB == targetItem) ||
+                (combo.itemA == targetItem && combo.itemB == draggedItem);
+
+            if (match)
+            {
+                Debug.Log("Combinación correcta");
+
+                //Ejecutar bloque de éxito
+                if (flowchart != null && !string.IsNullOrEmpty(combo.successBlock))
+                {
+                    flowchart.ExecuteBlock(combo.successBlock);
+                }
+
+                //Eliminar items si toca
+                if (combo.destroyA)
+                    items.Remove(combo.itemA);
+
+                if (combo.destroyB)
+                    items.Remove(combo.itemB);
+
+                //Añadir resultado
+                if (combo.result != null)
+                    AddItem(combo.result);
+
+                UpdateUI();
+                DeselectItem();
+                return;
+            }
+        }
+
+        //Combinacion incorrecta
+        Debug.Log("Combinación incorrecta");
+
+        if (flowchart != null && !string.IsNullOrEmpty(defaultBlock))
+        {
+            flowchart.ExecuteBlock(defaultBlock);
         }
     }
 }
