@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
+using Fungus;
 
 public class puzzleManagerArmario : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class puzzleManagerArmario : MonoBehaviour
 
     public Inventory inventory;
     private bool rewardGiven = false;
+
+    public Flowchart flowchart;
+    public string nombreBloque;
 
     void Awake()
     {
@@ -88,6 +92,9 @@ public class puzzleManagerArmario : MonoBehaviour
 
             DesactivarPuzle();
             gameObject.SetActive(false);
+            
+            flowchart.ExecuteBlock(nombreBloque);
+            
         }
         else
         {
