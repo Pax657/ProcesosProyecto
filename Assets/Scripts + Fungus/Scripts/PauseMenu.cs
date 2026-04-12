@@ -62,9 +62,11 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        fadeInOut.Instance.StartCoroutine(fadeInOut.Instance.FadeOut(2f));
         Time.timeScale = 1f; //Asegurarse de que el tiempo se reanude al volver al menú principal
         Debug.Log("CLICK EN MENU");
+        SceneManager.LoadScene("MainMenu");
+        
     }
 
     public void Resumir()
