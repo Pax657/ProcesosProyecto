@@ -9,11 +9,16 @@ public class HintButton : MonoBehaviour
     {
         if (PointsManager.Instance.SpendPoints(coste))
         {
-            pistaVisual.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("No tienes suficientes puntos");
+            if (pistaVisual != null)
+            {
+                pistaVisual.SetActive(true);
+            }
+            else
+            {
+                Debug.LogWarning("Pista visual no asignada en " + gameObject.name);
+            }
+
+            Destroy(gameObject);
         }
     }
 }
