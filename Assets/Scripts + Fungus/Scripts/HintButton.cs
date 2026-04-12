@@ -7,6 +7,9 @@ public class HintButton : MonoBehaviour
 
     public void ComprarPista()
     {
+        Debug.Log("Puntos actuales: " + PointsManager.Instance.puntos + " | Coste: " + coste);
+        Debug.Log("Botón pulsado");
+
         if (PointsManager.Instance.SpendPoints(coste))
         {
             if (pistaVisual != null)
