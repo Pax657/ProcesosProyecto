@@ -26,6 +26,8 @@ public class puzzleManagerArmario : MonoBehaviour
     public Flowchart flowchart;
     public string nombreBloque;
 
+    private cambiarModo cambiar;
+
     void Awake()
     {
         Instance = this;
@@ -33,6 +35,7 @@ public class puzzleManagerArmario : MonoBehaviour
 
     private void Start()
     {
+        cambiar = GetComponent<cambiarModo>();
         active = false;
         canvas.gameObject.SetActive(false);
     }
@@ -40,17 +43,17 @@ public class puzzleManagerArmario : MonoBehaviour
     public void ActivarPuzle()
     {
         active = true;
-        armario.SetActive(false);
+        cambiar.activarNormal();
         canvas.gameObject.SetActive(true);
-        jugador.inDialogue = true;
+        jugador.startDialogue();
     }
 
     public void DesactivarPuzle()
     {
         active = false;
-        armario.SetActive(true);
+        cambiar.puzzleTerminar();
         canvas.gameObject.SetActive(false);
-        jugador.inDialogue = false;
+        jugador.exitDialogue();
     }
 
     public void CheckPuzzle()
