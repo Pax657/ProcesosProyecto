@@ -22,7 +22,7 @@ public class MenuPrincipal : MonoBehaviour
     public void Salir()
     {
         Debug.Log("Saliendo del juego...");
-        fadeSalir();
+        StartCoroutine(fadeSalir());
     }
 
     public void Creditos()
