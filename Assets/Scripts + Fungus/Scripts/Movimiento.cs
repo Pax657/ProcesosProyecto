@@ -54,7 +54,6 @@ public class Movimiento : MonoBehaviour
         animator.SetBool("caminando", false);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         seguir = transform.localPosition;
@@ -64,7 +63,6 @@ public class Movimiento : MonoBehaviour
         escalaInicial = transform.localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!inDialogue)
@@ -103,7 +101,7 @@ public class Movimiento : MonoBehaviour
 
     private void clickMoverse()
     {
-        // Detectar click izquierdo
+        //Detectar click izquierdo
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -113,7 +111,7 @@ public class Movimiento : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-            // Primero revisamos interactuables
+            //Primero revisamos interactuables
             Collider2D hitInteractable = Physics2D.OverlapPoint(mousePos2D, interactableLayer);
             if (hitInteractable != null)
             {
@@ -128,11 +126,11 @@ public class Movimiento : MonoBehaviour
                 }
             }
 
-            // Revisamos si es suelo
+            //Revisamos si es suelo
             RaycastHit2D hitFloor = Physics2D.Raycast(mousePos2D, Vector2.zero, Mathf.Infinity, floorLayer);
             if (hitFloor.collider != null)
             {
-                // Actualizamos el objetivo al click
+                //Actualizamos el objetivo al click
                 seguir = hitFloor.collider.ClosestPoint(mousePos2D);
             }
         }
@@ -141,26 +139,25 @@ public class Movimiento : MonoBehaviour
         Vector2 direction = seguir - currentPos;
         Vector2 rawDir = seguir - currentPos;
 
-        // Evitamos el offset inicial que generaba movimiento “fantasma”
+        //Evitamos el offset inicial que generaba movimiento “fantasma”
         float distance = direction.magnitude;
         if (distance > 0.01f)
         {
-            // Aplicamos el offset solo si ya hay un objetivo distinto de la posición actual
+            //Aplicamos el offset solo si ya hay un objetivo distinto de la posición actual
             float offsetY = spriteRenderer.bounds.extents.y - 0.2f;
             direction.y += offsetY;
         }
 
-        // 🔹 DISTANCIA REAL (con offset aplicado)
         float realDistance = direction.magnitude;
 
         // Flip del sprite según dirección
         if (Mathf.Abs(direction.x) > 0.01f)
             spriteRenderer.flipX = direction.x > 0;
 
-        // Movimiento
+        //Movimiento
         if (puedeMover)
         {
-            if (realDistance > 0.01f)
+            if (realDistance > 0.05f)
             {
                 RaycastHit2D hit = Physics2D.Raycast(currentPos, direction.normalized, realDistance, obstacleLayer);
                 Vector2 moveDelta;
@@ -171,7 +168,7 @@ public class Movimiento : MonoBehaviour
                 }
                 else
                 {
-                    // Deslizamiento en caso de obstáculo
+                    //Deslizamiento en caso de obstáculo
                     float slideFactor = 0.5f;
                     Vector2 tangent = Vector2.Perpendicular(hit.normal);
                     Vector2 slideDir = Vector2.Dot(direction, tangent) * tangent.normalized * slideFactor;
@@ -180,6 +177,7 @@ public class Movimiento : MonoBehaviour
 
                 transform.position = currentPos + moveDelta;
             }
+
 
             if (realDistance > 0.1f)
             {
