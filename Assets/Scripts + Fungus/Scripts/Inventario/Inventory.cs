@@ -8,9 +8,9 @@ public class Inventory : MonoBehaviour
     public RectTransform inventoryPanel;
     public List<InventorySlot> slots;
 
-    private List<item> items = new List<item>();
+    public List<item> items = new List<item>();
     public item selectedItem;
-    private int maxItems = 6;
+    public int maxItems = 6;
 
     private bool isOpen = false;
 

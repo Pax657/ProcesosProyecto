@@ -11,6 +11,10 @@ public class Movimiento : MonoBehaviour
     public bool inDialogue;
     public bool puedeMover;
 
+    //VARIABLES DE POSICIÓN ACTUAL
+    public float currentX;
+    public float currentY;
+
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
@@ -69,6 +73,8 @@ public class Movimiento : MonoBehaviour
         {
             clickMoverse();
             UpdateCursor();
+            currentX = transform.position.x;
+            currentY = transform.position.y;
         }
 
         comprobarPausa();

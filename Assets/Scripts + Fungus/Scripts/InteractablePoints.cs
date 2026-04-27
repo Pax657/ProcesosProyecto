@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractablePoints : MonoBehaviour
 {
     public int puntosQueDa = 50;
-    private bool usado = false;
+    public bool usado = false;
 
     public GameObject floatingTextPrefab;
     public Canvas canvas;
