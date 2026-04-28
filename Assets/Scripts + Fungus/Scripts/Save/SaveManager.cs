@@ -56,8 +56,8 @@ public class SaveManager
     public static void SavePuzzlesData(Interactable interactable)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistent + "/puzzles.data";
-        FileStream stream = new Filestream(path, FileMode.Create);
+        string path = Application.persistentDataPath + "/puzzles.data";
+        FileStream stream = new FileStream(path, FileMode.Create);
 
         PuzzlesData data = new PuzzlesData(interactable);
         formatter.Serialize(stream, data);

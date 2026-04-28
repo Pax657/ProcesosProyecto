@@ -143,7 +143,7 @@ public class Movimiento : MonoBehaviour
 
         Vector2 currentPos = transform.position;
         Vector2 direction = seguir - currentPos;
-        Vector2 rawDir = seguir - currentPos;
+
 
         //Evitamos el offset inicial que generaba movimiento “fantasma”
         float distance = direction.magnitude;
@@ -154,6 +154,7 @@ public class Movimiento : MonoBehaviour
             direction.y += offsetY;
         }
 
+        Vector2 dirNormalized = direction.normalized;
         float realDistance = direction.magnitude;
 
         // Flip del sprite según dirección
@@ -185,13 +186,16 @@ public class Movimiento : MonoBehaviour
             }
 
 
-            if (realDistance > 0.1f)
+            if (realDistance > 0.2f)
             {
                 animator.SetBool("caminando", true);
+                animator.SetFloat("dirX", dirNormalized.x);
+                animator.SetFloat("dirY", dirNormalized.y);
                 //Debug.Log("Caminando hacia: " + seguir);
             }
             else
             {
+                seguir = transform.position;
                 animator.SetBool("caminando", false);
                 //Debug.Log("Detenido en: " + seguir);
             }
