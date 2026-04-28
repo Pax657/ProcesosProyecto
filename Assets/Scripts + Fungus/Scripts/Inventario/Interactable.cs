@@ -10,6 +10,8 @@ public class Interactable : MonoBehaviour, IDropHandler
 
     public List<ItemInteraction> itemInteractions;
 
+    public bool usado;
+
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("Drop sobre interactuable");
@@ -25,11 +27,13 @@ public class Interactable : MonoBehaviour, IDropHandler
 
         foreach (var interaction in itemInteractions)
         {
+            if (usado) return;
             if (interaction.itemName == draggedItem.itemName)
             {
                 flowchart.ExecuteBlock(interaction.blockName);
                 usedItem = true;
                 break;
+                usado = true;
             }
         }
 

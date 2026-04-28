@@ -52,6 +52,18 @@ public class SaveManager
         stream.Close();
     }
 
+    // Puzzles
+    public static void SavePuzzlesData(Interactable interactable)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistent + "/puzzles.data";
+        FileStream stream = new Filestream(path, FileMode.Create);
+
+        PuzzlesData data = new PuzzlesData(interactable);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
     // MÉTODOS DE LOAD
     // Puntos
     public static PointsData LoadPointsData()
@@ -108,6 +120,21 @@ public class SaveManager
             stream.Close();
             return data;
         }  
+        return null;
+    }
+
+    // Puzzles
+    public static PuzzlesData LoadPuzzlesData()
+    {
+        string path = Application.persistentDataPath + "/puzzles.data";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            PuzzlesData data = (PuzzlesData)formatter.Deserialize(stream);
+            stream.Close();
+            return data;
+        }
         return null;
     }
 
