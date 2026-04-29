@@ -1452,7 +1452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+<<<<<<< Updated upstream
   m_Material: {fileID: 558306697}
+=======
+  m_Material: {fileID: 1151359269}
+>>>>>>> Stashed changes
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1666,7 +1670,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+<<<<<<< Updated upstream
   m_Material: {fileID: 661441012}
+=======
+  m_Material: {fileID: 444874426}
+>>>>>>> Stashed changes
   m_Color: {r: 0.95985013, g: 1, b: 0.5990566, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4204,6 +4212,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443037889}
   m_CullTransparentMesh: 1
+--- !u!21 &444874426
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/IndependentRoundedCorners
+  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _halfSize: {r: 658.9508, g: 252.9806, b: 0, a: 0}
+    - _r: {r: 100, g: 100, b: 40, a: 40}
+    - _rect2props: {r: 0.00012207031, g: -30, b: 595.33545, a: 595.33545}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &456170899
 GameObject:
   m_ObjectHideFlags: 0
@@ -6434,6 +6484,7 @@ GameObject:
   - component: {fileID: 644131270}
   - component: {fileID: 644131271}
   - component: {fileID: 644131273}
+  - component: {fileID: 644131274}
   m_Layer: 3
   m_Name: puertaClick
   m_TagString: Interactuable
@@ -6537,7 +6588,26 @@ MonoBehaviour:
     blockName: Clickeable/Puerta/llaveCorrecta
   - itemName: llaveArmario
     blockName: Clickeable/Puerta/llaveIncorrecta
+<<<<<<< Updated upstream
   usado: 0
+=======
+--- !u!114 &644131274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644131268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03030a55cde8e7c47a72db4383e436f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::InteractablePoints
+  puntosQueDa: 50
+  usado: 0
+  floatingTextPrefab: {fileID: 6056034909564257594, guid: 6cc98be00feba214fbdaccacb3055602, type: 3}
+  canvas: {fileID: 1311993202}
+>>>>>>> Stashed changes
 --- !u!1 &655481635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6751,7 +6821,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+<<<<<<< Updated upstream
   m_Material: {fileID: 965442598}
+=======
+  m_Material: {fileID: 957560816}
+>>>>>>> Stashed changes
   m_Color: {r: 1, g: 1, b: 1, a: 0.40392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -20036,7 +20110,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Fungus::HintButton
   coste: 100
   pistaVisual: {fileID: 1867516832}
+<<<<<<< Updated upstream
 --- !u!21 &965442598
+=======
+--- !u!21 &957560816
+>>>>>>> Stashed changes
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -22071,6 +22149,46 @@ Transform:
   - {fileID: 2033977941}
   m_Father: {fileID: 1658560187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1151359269
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 563.7528, g: 100, b: 50, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1156391561
 GameObject:
   m_ObjectHideFlags: 0
@@ -22686,6 +22804,48 @@ PolygonCollider2D:
       - {x: -0.84306943, y: -2.304899}
       - {x: 0.82099056, y: -3.7884045}
   m_UseDelaunayMesh: 1
+--- !u!21 &1192151750
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/IndependentRoundedCorners
+  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _halfSize: {r: 658.9508, g: 252.9806, b: 0, a: 0}
+    - _r: {r: 100, g: 100, b: 40, a: 40}
+    - _rect2props: {r: 0.00012207031, g: -30, b: 595.33545, a: 595.33545}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1212997041
 GameObject:
   m_ObjectHideFlags: 0
@@ -26266,6 +26426,7 @@ GameObject:
   - component: {fileID: 1554413462}
   - component: {fileID: 1554413464}
   - component: {fileID: 1554413463}
+  - component: {fileID: 1554413465}
   m_Layer: 3
   m_Name: ventanaClick
   m_TagString: Untagged
@@ -26356,6 +26517,22 @@ MonoBehaviour:
   hoverCursor: {fileID: 0}
   useEventSystem: 0
   activateDistance: 5
+--- !u!114 &1554413465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554413461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03030a55cde8e7c47a72db4383e436f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::InteractablePoints
+  puntosQueDa: 50
+  usado: 0
+  floatingTextPrefab: {fileID: 6056034909564257594, guid: 6cc98be00feba214fbdaccacb3055602, type: 3}
+  canvas: {fileID: 1311993202}
 --- !u!1 &1559407347
 GameObject:
   m_ObjectHideFlags: 0
@@ -27687,7 +27864,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+<<<<<<< Updated upstream
   m_Material: {fileID: 1337030650}
+=======
+  m_Material: {fileID: 1192151750}
+>>>>>>> Stashed changes
   m_Color: {r: 0.95985013, g: 1, b: 0.5990566, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -28000,7 +28181,10 @@ MonoBehaviour:
   itemInteractions:
   - itemName: llaveArmario
     blockName: Clickeable/Armario/llave
+<<<<<<< Updated upstream
   usado: 0
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1711849830
 MonoBehaviour:
   m_ObjectHideFlags: 0
