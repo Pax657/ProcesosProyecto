@@ -33,4 +33,9 @@ public class InteractablePoints : MonoBehaviour
 
         Debug.Log("Texto instanciado");
     }
+
+    public void LoadFromData(InteractableData data)
+    {
+        usado = data.usado;
+    }
 }

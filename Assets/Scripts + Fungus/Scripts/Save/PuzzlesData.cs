@@ -8,4 +8,9 @@ public class PuzzlesData
     {
         usado = interactable.usado;
     }
+
+    public void LoadFromData(PuzzlesData data)
+    {
+        this.usado = data.usado;
+    }
 }

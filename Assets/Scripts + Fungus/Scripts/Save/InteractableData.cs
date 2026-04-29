@@ -1,12 +1,12 @@
 using UnityEngine;
+[System.Serializable]
 
 public class InteractableData
 {
-    public bool isUsed;
+    public bool usado;
 
-    public InteractableData(InteractablePoints interactablePoints)
+    public InteractableData(InteractablePoints interactable)
     {
-        isUsed = interactablePoints.usado;
+        usado = interactable.usado;
     }
-    
 }

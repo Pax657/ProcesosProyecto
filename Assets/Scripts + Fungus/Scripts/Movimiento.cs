@@ -85,6 +85,11 @@ public class Movimiento : MonoBehaviour
         if (inDialogue) animator.SetBool("caminando", false);
     }
 
+    public void LoadFromData(PlayerData data)
+    {
+        transform.position = new Vector2(data.currentX, data.currentY);
+    }
+
     public void cambioPerspectiva()
     {
         float t = Mathf.InverseLerp(yLejos.position.y, yCerca.position.y, transform.position.y);

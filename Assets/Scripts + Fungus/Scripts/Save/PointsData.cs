@@ -1,4 +1,5 @@
 using UnityEngine;
+[System.Serializable]
 
 public class PointsData
 {
@@ -8,4 +9,6 @@ public class PointsData
     {
         puntos = pointsManager.puntos;
     }
+
+    
 }

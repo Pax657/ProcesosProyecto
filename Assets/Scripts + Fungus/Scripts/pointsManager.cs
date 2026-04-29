@@ -6,6 +6,11 @@ public class PointsManager : MonoBehaviour
 
     public int puntos = 0;
 
+    public void LoadFromData(PointsData data)
+    {
+        this.puntos = data.puntos;
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,4 +40,6 @@ public class PointsManager : MonoBehaviour
         }
         return false;
     }
+
+
 }

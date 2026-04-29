@@ -42,4 +42,9 @@ public class Interactable : MonoBehaviour, IDropHandler
             flowchart.ExecuteBlock(defaultBlock);
         }
     }
+
+    public void LoadFromData(PuzzlesData data)
+    {
+        usado = data.usado;
+    }
 }

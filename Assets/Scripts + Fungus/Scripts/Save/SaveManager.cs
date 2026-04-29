@@ -64,6 +64,20 @@ public class SaveManager
         stream.Close();
     }
 
+    public static void SaveGlobal(
+    PointsManager pointsManager,
+    Movimiento movimiento,
+    Inventory inventory,
+    Interactable interactable,
+    InteractablePoints interactablePoints)
+    {
+        SavePointsData(pointsManager);
+        SavePlayerData(movimiento);
+        SaveInventoryData(inventory);
+        SavePuzzlesData(interactable);
+        SaveInteractableData(interactablePoints);
+    }
+
     // MÉTODOS DE LOAD
     // Puntos
     public static PointsData LoadPointsData()
@@ -136,6 +150,35 @@ public class SaveManager
             return data;
         }
         return null;
+    }
+
+    // LOAD GLOBAL
+    public static void LoadGlobal(
+    PointsManager pointsManager,
+    Movimiento movimiento,
+    Inventory inventory,
+    Interactable interactable,
+    InteractablePoints interactablePoints)
+    {
+        PointsData pointsData = LoadPointsData();
+        if (pointsData != null)
+            pointsManager.LoadFromData(pointsData);
+
+        PlayerData playerData = LoadPlayerData();
+        if (playerData != null)
+            movimiento.LoadFromData(playerData);
+
+        InventoryData inventoryData = LoadInventoryData();
+        if (inventoryData != null)
+            inventory.LoadFromData(inventoryData);
+
+        PuzzlesData puzzlesData = LoadPuzzlesData();
+        if (puzzlesData != null)
+            interactable.LoadFromData(puzzlesData);
+
+        InteractableData interactableData = LoadInteractableData();
+        if (interactableData != null)
+            interactablePoints.LoadFromData(interactableData);
     }
 
 }

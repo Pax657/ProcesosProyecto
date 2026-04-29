@@ -38,6 +38,17 @@ public class Inventory : MonoBehaviour
 
     public static Inventory instance;
 
+    public void LoadFromData(InventoryData data)
+    {
+        maxItems = data.maxItems;
+        items[0] = data.item0;
+        items[1] = data.item1;
+        items[2] = data.item2;
+        items[3] = data.item3;
+        items[4] = data.item4;
+        items[5] = data.item5;
+    }
+
     void Awake()
     {
         if (instance != null && instance != this)
