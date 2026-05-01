@@ -9086,6 +9086,7 @@ GameObject:
   - component: {fileID: 846854519}
   - component: {fileID: 846854518}
   - component: {fileID: 846854517}
+  - component: {fileID: 846854524}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -9118,7 +9119,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 846854251}
+  - {fileID: 846854225}
   selectedCommands: []
   variables:
   - {fileID: 846854510}
@@ -9732,7 +9733,7 @@ MonoBehaviour:
   itemId: 28
   blockName: startDialogue
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 846854524}
   commandList:
   - {fileID: 846854254}
   - {fileID: 846854253}
@@ -19402,6 +19403,21 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &846854524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846854220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fungus::Fungus.GameStarted
+  parentBlock: {fileID: 846854251}
+  suppressBlockAutoSelect: 0
+  waitForFrames: 1
 --- !u!1 &848277835
 GameObject:
   m_ObjectHideFlags: 0
