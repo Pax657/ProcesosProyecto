@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Fungus; // <- Importar Fungus
+using Fungus;
 
 public class Inventory : MonoBehaviour
 {
@@ -32,11 +32,13 @@ public class Inventory : MonoBehaviour
     private string interactableTag = "Interactuable";
 
     [Header("Fungus")]
-    public Flowchart flowchart; // <- Referencia al Flowchart
-    public string blockName = "InteractBlock"; // <- Nombre del bloque a ejecutar
+    public Flowchart flowchart; //Referencia al Flowchart
+    public string blockName = "InteractBlock"; //Nombre del bloque a ejecutar
     public string defaultBlock = "InteractBlock";
 
     public static Inventory instance;
+
+    public Animator animator;
 
     public void LoadFromData(InventoryData data)
     {
@@ -197,6 +199,8 @@ public class Inventory : MonoBehaviour
                 //Ejecutar bloque de éxito
                 if (flowchart != null && !string.IsNullOrEmpty(combo.successBlock))
                 {
+                    animator.Play("fusion");
+                    Debug.Log("Correcto");
                     flowchart.ExecuteBlock(combo.successBlock);
                 }
 
