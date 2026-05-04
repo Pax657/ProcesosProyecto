@@ -44,7 +44,7 @@ public class puzzleManagerArmario : MonoBehaviour
         active = true;
         cambiar.activarNormal();
         canvas.gameObject.SetActive(true);
-        jugador.startDialogue();
+        jugador.enabled = false;
     }
 
     public void DesactivarPuzle()
@@ -52,7 +52,7 @@ public class puzzleManagerArmario : MonoBehaviour
         active = false;
         cambiar.puzzleTerminar();
         canvas.gameObject.SetActive(false);
-        jugador.exitDialogue();
+        jugador.enabled = true;
     }
 
     public void CheckPuzzle()

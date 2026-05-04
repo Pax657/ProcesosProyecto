@@ -31,6 +31,7 @@ public class cambioFondo : MonoBehaviour
 
     private IEnumerator CambioConFade(Movimiento mov)
     {
+        Debug.Log("Iniciando cambio de fondo...");
         Camara cam = Camera.main.GetComponent<Camara>();
 
         //Fade out
@@ -44,6 +45,7 @@ public class cambioFondo : MonoBehaviour
         //Cambiar referencias de perspectiva
         mov.yCerca = nuevoYCerca;
         mov.yLejos = nuevoYLejos;
+        Debug.Log("Referencias de perspectiva actualizadas: yCerca = " + mov.yCerca.position + ", yLejos = " + mov.yLejos.position);
 
         //Mover camara
         cam.SetBounds(nuevoMinBounds, nuevoMaxBounds);
