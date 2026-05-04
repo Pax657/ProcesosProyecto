@@ -18,6 +18,17 @@ public class MenuPrincipal : MonoBehaviour
         FadeAndLoad(nombreEscenaJuego);
     }
 
+    // Botón Cargar
+    public void LoadGame()
+    {
+        // 1. Cargar datos desde disco
+        SaveDataCache.pointsData = SaveManager.LoadPointsData();
+        SaveDataCache.playerData = SaveManager.LoadPlayerData();
+        SaveDataCache.inventoryData = SaveManager.LoadInventoryData();
+        SaveDataCache.puzzlesData = SaveManager.LoadPuzzlesData();
+        SaveDataCache.interactableData = SaveManager.LoadInteractableData();
+        Debug.Log("Datos cargados en cache");
+    }
     // Botón Salir
     public void Salir()
     {
