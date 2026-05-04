@@ -9078,6 +9078,11 @@ GameObject:
   - component: {fileID: 846854513}
   - component: {fileID: 846854512}
   - component: {fileID: 846854511}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
   - component: {fileID: 846854516}
   - component: {fileID: 846854523}
   - component: {fileID: 846854522}
@@ -9086,7 +9091,11 @@ GameObject:
   - component: {fileID: 846854519}
   - component: {fileID: 846854518}
   - component: {fileID: 846854517}
+<<<<<<< Updated upstream
   - component: {fileID: 846854524}
+=======
+>>>>>>> parent of 0464c85 (volvemos a activar la cinemática inicial)
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -9119,7 +9128,15 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
+<<<<<<< Updated upstream
   - {fileID: 846854225}
+=======
+<<<<<<< HEAD
+  - {fileID: 846854469}
+=======
+  - {fileID: 846854251}
+>>>>>>> parent of 0464c85 (volvemos a activar la cinemática inicial)
+>>>>>>> Stashed changes
   selectedCommands: []
   variables:
   - {fileID: 846854510}
@@ -9733,7 +9750,15 @@ MonoBehaviour:
   itemId: 28
   blockName: startDialogue
   description: 
+<<<<<<< Updated upstream
   eventHandler: {fileID: 846854524}
+=======
+<<<<<<< HEAD
+  eventHandler: {fileID: 846854509}
+=======
+  eventHandler: {fileID: 0}
+>>>>>>> parent of 0464c85 (volvemos a activar la cinemática inicial)
+>>>>>>> Stashed changes
   commandList:
   - {fileID: 846854254}
   - {fileID: 846854253}
@@ -18870,6 +18895,11 @@ MonoBehaviour:
   vector3Data:
     vector3Ref: {fileID: 0}
     vector3Val: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 --- !u!114 &846854516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19403,6 +19433,7 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+<<<<<<< Updated upstream
 --- !u!114 &846854524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19418,6 +19449,9 @@ MonoBehaviour:
   parentBlock: {fileID: 846854251}
   suppressBlockAutoSelect: 0
   waitForFrames: 1
+=======
+>>>>>>> parent of 0464c85 (volvemos a activar la cinemática inicial)
+>>>>>>> Stashed changes
 --- !u!1 &848277835
 GameObject:
   m_ObjectHideFlags: 0
