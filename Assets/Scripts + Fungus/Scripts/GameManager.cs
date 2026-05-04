@@ -2,15 +2,53 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GameManager Instance;
+
+    [Header("References")]
+    public PointsManager pointsManager;
+    public Movimiento movimiento;
+    public Inventory inventory;
+    public Interactable interactable;
+    public InteractablePoints interactablePoints;
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // 💾 GUARDAR
+    public void SaveGame()
     {
-        
+        SaveManager.SaveGlobal(
+            pointsManager,
+            movimiento,
+            inventory,
+            interactable,
+            interactablePoints
+        );
+
+        Debug.Log("💾 Juego guardado");
     }
+
+    // 📂 CARGAR (desde gameplay)
+    //public void LoadGame()
+    //{
+    //    SaveManager.LoadGlobal(
+    //        pointsManager,
+    //        movimiento,
+    //        inventory,
+    //        interactable,
+    //        interactablePoints
+    //    );
+    //
+    //    Debug.Log("📂 Juego cargado");
+    //}
 }
