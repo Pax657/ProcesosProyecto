@@ -36,6 +36,13 @@ public class InteractablePoints : MonoBehaviour
 
     public void LoadFromData(InteractableData data)
     {
-        usado = data.usado;
+        foreach (InteractableStateData state in data.interactables)
+        {
+            if (state.objectName == gameObject.name)
+            {
+                usado = state.usado;
+                return;
+            }
+        }
     }
 }
