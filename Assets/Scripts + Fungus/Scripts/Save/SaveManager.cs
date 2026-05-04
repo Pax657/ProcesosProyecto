@@ -30,13 +30,14 @@ public class SaveManager
         stream.Close();
     }
     // Interactables
-    public static void SaveInteractableData(InteractablePoints interactablePoints)
+    public static void SaveInteractableData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/interactable.data";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        InteractableData data = new InteractableData(interactablePoints);
+        InteractablePoints[] allInteractables = Object.FindObjectsOfType<InteractablePoints>();
+        InteractableData data = new InteractableData(allInteractables);
         formatter.Serialize(stream, data);
         stream.Close();
     }
@@ -75,7 +76,7 @@ public class SaveManager
         SavePlayerData(movimiento);
         SaveInventoryData(inventory);
         SavePuzzlesData(interactable);
-        SaveInteractableData(interactablePoints);
+        SaveInteractableData();  // Busca todos los interactables automáticamente
     }
 
     // MÉTODOS DE LOAD
@@ -121,6 +122,26 @@ public class SaveManager
             return data;
         }
         return null;
+    }
+
+    // Restaurar estado de todos los interactables
+    public static void RestoreAllInteractables(InteractableData data)
+    {
+        if (data == null) return;
+
+        InteractablePoints[] allInteractables = Object.FindObjectsOfType<InteractablePoints>();
+        
+        foreach (InteractableStateData savedState in data.interactables)
+        {
+            foreach (InteractablePoints interactable in allInteractables)
+            {
+                if (interactable.gameObject.name == savedState.objectName)
+                {
+                    interactable.usado = savedState.usado;
+                    break;
+                }
+            }
+        }
     }
     // Inventario
     public static InventoryData LoadInventoryData()
@@ -178,7 +199,7 @@ public class SaveManager
 
         InteractableData interactableData = LoadInteractableData();
         if (interactableData != null)
-            interactablePoints.LoadFromData(interactableData);
+            RestoreAllInteractables(interactableData);
     }
 
 }
