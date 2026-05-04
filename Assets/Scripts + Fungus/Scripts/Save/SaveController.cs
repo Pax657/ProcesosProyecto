@@ -27,7 +27,7 @@ public class SaveController : MonoBehaviour
             interactablePoints
         );
 
-        Debug.Log("📂 Cargado en escena actual");
+        Debug.Log("Cargado en escena actual");
     }
 
     public void SaveGame()
@@ -37,9 +37,9 @@ public class SaveController : MonoBehaviour
             movimiento,
             inventory,
             interactable,
-            interactablePoints
+            interactablePoints  // Ya no es necesario, pero se mantiene para compatibilidad
         );
 
-        Debug.Log("💾 Guardado");
+        Debug.Log("Guardado");
     }
 }

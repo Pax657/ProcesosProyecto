@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     public PointsManager pointsManager;
     public Movimiento movimiento;
     public Inventory inventory;
-    Interactable[] interactables;
-    InteractablePoints[] interactablePoints;
+    public Interactable interactables;
+    public InteractablePoints interactablePoints;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
             pointsManager,
             movimiento,
             inventory,
-            interactable,
+            interactables,
             interactablePoints
         );
 
