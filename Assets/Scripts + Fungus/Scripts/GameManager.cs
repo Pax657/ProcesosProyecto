@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            var loader = FindObjectOfType<LoadGameApplier>();
+            if (loader != null)
+                loader.ApplySave();
         }
         else
         {
@@ -24,31 +27,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 💾 GUARDAR
-    public void SaveGame()
-    {
-        SaveManager.SaveGlobal(
-            pointsManager,
-            movimiento,
-            inventory,
-            interactable,
-            interactablePoints
-        );
-
-        Debug.Log("💾 Juego guardado");
-    }
-
-    // 📂 CARGAR (desde gameplay)
-    //public void LoadGame()
-    //{
-    //    SaveManager.LoadGlobal(
-    //        pointsManager,
-    //        movimiento,
-    //        inventory,
-    //        interactable,
-    //        interactablePoints
-    //    );
-    //
-    //    Debug.Log("📂 Juego cargado");
-    //}
+    
 }

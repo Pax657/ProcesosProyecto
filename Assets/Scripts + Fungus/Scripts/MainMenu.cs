@@ -51,5 +51,17 @@ public class MenuPrincipal : MonoBehaviour
     {
         yield return StartCoroutine(fadeInOut.Instance.FadeIn(fadeOutSpeed));
         Application.Quit();
-}
+    }
+
+    public void LoadGame()
+    {
+        // 1. Cargar datos desde disco
+        SaveDataCache.pointsData = SaveManager.LoadPointsData();
+        SaveDataCache.playerData = SaveManager.LoadPlayerData();
+        SaveDataCache.inventoryData = SaveManager.LoadInventoryData();
+        SaveDataCache.puzzlesData = SaveManager.LoadPuzzlesData();
+        SaveDataCache.interactableData = SaveManager.LoadInteractableData();
+
+
+    }
 }
