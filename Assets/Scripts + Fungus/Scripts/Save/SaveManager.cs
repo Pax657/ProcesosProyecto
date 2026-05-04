@@ -176,9 +176,9 @@ public class SaveManager
         if (puzzlesData != null)
             interactable.LoadFromData(puzzlesData);
 
-        InteractableData interactableData = LoadInteractableData();
-        if (interactableData != null)
-            interactablePoints.LoadFromData(interactableData);
+        //InteractableData interactableData = LoadInteractableData();
+        //if (interactableData != null)
+        //    interactablePoints.LoadFromData(interactableData);
     }
 
 }

@@ -33,16 +33,15 @@ public class InteractablePoints : MonoBehaviour
 
         Debug.Log("Texto instanciado");
     }
-
-    public void LoadFromData(InteractableData data)
-    {
-        foreach (InteractableStateData state in data.interactables)
-        {
-            if (state.objectName == gameObject.name)
-            {
-                usado = state.usado;
-                return;
-            }
-        }
-    }
+    //public void LoadFromData(InteractableData data)
+    //{
+    //    foreach (InteractableData state in data.interactables)
+    //   {
+    //        if (state.objectName == gameObject.name)
+    //        {
+    //            usado = state.usado;
+    //            return;
+    //        }
+    //    }
+    //}
 }
