@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7410755b599be414a82928658c25f416
   - enabled: 1
-    path: Assets/Scenes/Creditos.unity
-    guid: 2ea45ae376e58074e82ebd2b724d0752
-  - enabled: 1
     path: Assets/Scenes/Habitacion1.unity
     guid: d0548552aa0d5904e9f422013d609d6f
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: 2ea45ae376e58074e82ebd2b724d0752
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
